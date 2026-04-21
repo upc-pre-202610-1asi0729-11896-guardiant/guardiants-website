@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "title": "GUARDIANTS - The Ultimate Vehicle Tracking Solution",
+        "description": "GUARDIANTS is a cutting-edge vehicle tracking system designed to provide real-time location monitoring, advanced security features, and seamless integration for both personal and commercial use.",
+        "home": "Home",
+        "about": "About Us",
+        "how": "How does it work?",
+        "faq": "FAQs",
+        "contact": "Contact"
+    },
+    "cta":{
+        "login": "Login",
+        "signup": "Sign Up"
+    },
+    "heroSection": {
+        "tagline": "Track Your Vehicle with GUARDIANTS",
+        "slogan": "Real-time location monitoring, advanced security features, and seamless integration for your vehicle.",
+        "cta": "Get Started"
+    }
+}

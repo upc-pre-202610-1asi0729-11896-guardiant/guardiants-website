@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God's Tracker - Intelligent Vehicle Security</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Navigation */
+        header {
+            background-color: #f5f5f5;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            border: 2px solid #333;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 12px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-auth {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            color: #333;
+        }
+
+        .btn-signup {
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .btn-signup:hover {
+            background-color: #555;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #e8e8e8;
+            padding: 100px 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, #999, transparent);
+        }
+
+        .hero::before {
+            width: 600px;
+            height: 2px;
+            top: 25%;
+            left: -100px;
+            transform: rotate(-25deg);
+        }
+
+        .hero::after {
+            width: 600px;
+            height: 2px;
+            top: 50%;
+            right: -200px;
+            transform: rotate(25deg);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-tagline {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: #fff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-cta:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mission Section */
+        .mission {
+            background-color: #fff;
+            padding: 80px 60px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .mission-graphic {
+            width: 300px;
+            height: 200px;
+            background-color: #d3d3d3;
+            border-radius: 8px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .mission-graphic::before,
+        .mission-graphic::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, #999, transparent);
+        }
+
+        .mission-graphic::before {
+            width: 250px;
+            height: 2px;
+            top: 30%;
+            left: -50px;
+            transform: rotate(-25deg);
+        }
+
+        .mission-graphic::after {
+            width: 250px;
+            height: 2px;
+            top: 60%;
+            right: -100px;
+            transform: rotate(25deg);
+        }
+
+        .mission-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .mission-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Vision Section */
+        .vision {
+            background-color: #f9f9f9;
+            padding: 80px 60px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .vision-content {
+            flex: 1;
+        }
+
+        .vision-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .vision-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .vision-graphic {
+            width: 300px;
+            height: 200px;
+            background-color: #d3d3d3;
+            border-radius: 8px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .vision-graphic::before,
+        .vision-graphic::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, #999, transparent);
+        }
+
+        .vision-graphic::before {
+            width: 250px;
+            height: 2px;
+            top: 30%;
+            right: -50px;
+            transform: rotate(25deg);
+        }
+
+        .vision-graphic::after {
+            width: 250px;
+            height: 2px;
+            bottom: 30%;
+            left: -100px;
+            transform: rotate(-25deg);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: #fff;
+            padding: 80px 60px;
+        }
+
+        .benefits h2 {
+            font-size: 36px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .benefit-card {
+            background-color: #e8e8e8;
+            border-radius: 8px;
+            height: 150px;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* Telemetry Section */
+        .telemetry {
+            background-color: #f9f9f9;
+            padding: 80px 60px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .telemetry-content {
+            flex: 1;
+        }
+
+        .telemetry-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .telemetry-list {
+            list-style: none;
+        }
+
+        .telemetry-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .telemetry-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 2px;
+        }
+
+        .telemetry-graphic {
+            width: 300px;
+            height: 250px;
+            background-color: #d3d3d3;
+            border-radius: 8px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .telemetry-graphic::before,
+        .telemetry-graphic::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, #999, transparent);
+        }
+
+        .telemetry-graphic::before {
+            width: 280px;
+            height: 2px;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-20deg);
+        }
+
+        .telemetry-graphic::after {
+            width: 280px;
+            height: 2px;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%) rotate(20deg);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: #fff;
+            padding: 80px 60px;
+        }
+
+        .how-it-works h2 {
+            font-size: 36px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .how-card {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .how-card:hover {
+            background-color: #e8e8e8;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .how-card-icon {
+            width: 120px;
+            height: 80px;
+            background-color: #d3d3d3;
+            border-radius: 6px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .how-card-icon::before,
+        .how-card-icon::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, #999, transparent);
+        }
+
+        .how-card-icon::before {
+            width: 100px;
+            height: 2px;
+            top: 25%;
+            left: 10px;
+            transform: rotate(-25deg);
+        }
+
+        .how-card-icon::after {
+            width: 100px;
+            height: 2px;
+            top: 60%;
+            right: 10px;
+            transform: rotate(25deg);
+        }
+
+        .how-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .how-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .header-left {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .mission,
+            .vision,
+            .telemetry {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            .mission-graphic,
+            .vision-graphic,
+            .telemetry-graphic {
+                width: 100%;
+                height: 150px;
+            }
+
+            .benefits,
+            .how-it-works {
+                padding: 40px 20px;
+            }
+
+            .benefits-grid,
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits h2,
+            .how-it-works h2 {
+                font-size: 28px;
+            }
+
+            .mission-content h2,
+            .vision-content h2,
+            .telemetry-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="logo guardiants - short.png" alt="God's Tracker Logo" width="80">
+            </div>
+            <div class="brand-name">GOD's Tracker</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">{headers.home}</a></li>
+                    <li><a href="#about">{headers.about}</a></li>
+                    <li><a href="#how">{headers.how}</a></li>
+                    <li><a href="#faq">{headers.faq}</a></li>
+                    <li><a href="#contact">{headers.contact}</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn-auth btn-login">Login</button>
+            <button class="btn-auth btn-signup">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-tagline">PREVENT | PROTECT | OPTIMIZE</div>
+            <h1>The new era of intelligent vehicle security with God's Tracker</h1>
+            <button class="btn-cta">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="about">
+        <div class="mission-graphic"></div>
+        <div class="mission-content">
+            <h2>Mission</h2>
+            <p>At God's Tracker, we're revolutionizing vehicle security through intelligent, real-time monitoring and predictive analytics. Our mission is to protect what matters most to you with cutting-edge technology designed for the modern world.</p>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision">
+        <div class="vision-content">
+            <h2>Vision</h2>
+            <p>We envision a world where every vehicle is protected with advanced intelligence. By combining real-time telemetry, predictive analytics, and seamless integration, we're building the foundation for smarter, safer roads. Every journey should be secure.</p>
+        </div>
+        <div class="vision-graphic"></div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <h2>Benefits</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card"></div>
+            <div class="benefit-card"></div>
+            <div class="benefit-card"></div>
+            <div class="benefit-card"></div>
+            <div class="benefit-card"></div>
+            <div class="benefit-card"></div>
+        </div>
+    </section>
+
+    <!-- Telemetry Section -->
+    <section class="telemetry" id="how">
+        <div class="telemetry-content">
+            <h2>Where telemetry and security meets</h2>
+            <ul class="telemetry-list">
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Consectetur adipiscing elit</li>
+                <li>Sed do eiusmod tempor</li>
+                <li>Incididunt ut labore et dolore magna</li>
+            </ul>
+        </div>
+        <div class="telemetry-graphic"></div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-works">
+        <h2>How does it work?</h2>
+        <div class="how-grid">
+            <div class="how-card">
+                <div class="how-card-icon"></div>
+                <h3>Natural people</h3>
+                <p>Easily integrate God's Tracker with your vehicle in minutes.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-card-icon"></div>
+                <h3>Monitor</h3>
+                <p>Get real-time insights and alerts about your vehicle's security.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-card-icon"></div>
+                <h3>Protect</h3>
+                <p>Proactive security measures keep your vehicle safe 24/7.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #f5f5f5; padding: 40px 60px; text-align: center; color: #666; font-size: 14px;">
+        <p>&copy; 2026 GUARDIANTS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
