@@ -1,0 +1,59 @@
+{
+    "headers": {
+        "title": "GUARDIANTS - La Solución Definitiva de Rastreo Vehicular",
+        "description": "GUARDIANTS es un sistema de rastreo vehicular de vanguardia diseñado para proporcionar monitoreo de ubicación en tiempo real, características de seguridad avanzadas e integración perfecta para uso personal y comercial.",
+        "home": "Inicio",
+        "about": "Acerca de Nosotros",
+        "how": "¿Cómo funciona?",
+        "faq": "Preguntas Frecuentes",
+        "contact": "Contacto"
+    },
+    "cta": {
+        "login": "Iniciar Sesión",
+        "signup": "Registrarse"
+    },
+    "heroSection": {
+        "tagline": "Rastrear tu Vehículo con GUARDIANTS",
+        "slogan": "Monitoreo de ubicación en tiempo real, características de seguridad avanzadas e integración perfecta para tu vehículo.",
+        "cta": "Comenzar"
+    },
+    "mission": {
+        "title": "Misión",
+        "content": "Nuestra misión es transformar la seguridad vehicular mediante un sistema de monitoreo inteligente y telemetría avanzada, permitiendo que nuestros segmentos objetivos recuperen el control absoluto de sus unidades en tiempo real. Estamos comprometidos con resguardar el patrimonio de nuestros usuarios y potenciar la rentabilidad de sus activos."
+    },
+    "vision": {
+        "title": "Visión",
+        "content": "Nuestra visión es consolidarnos como la plataforma líder en seguridad vehicular y gestión inteligente de activos mediante telemetría e IoT elevando el estándar de protección frente a la delincuencia tecnificada. Asimismo, aspiramos a que cada vehículo conectado a GuardiAnts opere como un sistema inteligente y autónomo capaz de anticipar riesgos."
+    },
+    "benefits": {
+        "title": "Beneficios",
+        "benefit1": {},
+        "benefit2": {},
+        "benefit3": {},
+        "benefit4": {},
+        "benefit5": {},
+        "benefit6": {}
+    },
+    "telemetrySection": {
+        "title": "Donde la Telemetría y la Seguridad se Encuentran",
+        "content": "GUARDIANTS ofrece una plataforma de telemetría avanzada que proporciona monitoreo en tiempo real de la ubicación, velocidad, estado del vehículo y otros datos críticos.",
+        "bullet1": "Monitoreo de ubicación en tiempo real",
+        "bullet2": "Alertas instantáneas de actividad sospechosa",
+        "bullet3": "Datos de telemetría avanzados y análisis"
+    },
+    "howdoesitworkSection": {
+        "title": "¿Cómo funciona?",
+        "step1": {
+            "title": "Integración Fácil",
+            "description": "Integra fácilmente GUARDIANTS con tu vehículo en minutos."
+        },
+        "step2": {
+            "title": "Monitoreo en Tiempo Real",
+            "description": "Obtén información en tiempo real y alertas sobre la seguridad de tu vehículo."
+        },
+        "step3": {
+            "title": "Protección Avanzada",
+            "description": "Las medidas de seguridad proactivas mantienen tu vehículo protegido las 24/7."
+        }
+    }
+}

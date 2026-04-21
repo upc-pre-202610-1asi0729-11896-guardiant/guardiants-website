@@ -16,5 +16,44 @@
         "tagline": "Track Your Vehicle with GUARDIANTS",
         "slogan": "Real-time location monitoring, advanced security features, and seamless integration for your vehicle.",
         "cta": "Get Started"
+    },
+    "mission": {
+        "title": "Mission",
+        "content": "At GUARDIANTS, we're revolutionizing vehicle security through intelligent, real-time monitoring and predictive analytics. Our mission is to protect what matters most to you with cutting-edge technology designed for the modern world."
+    },
+    "vision": {
+        "title": "Vision",
+        "content": "Our vision is to create a safer and more connected world where every vehicle is protected by GUARDIANTS, empowering individuals and businesses with the confidence and peace of mind they deserve."
+    },
+    "benefits": {
+        "title": "Benefits",
+        "benefit1": {},
+        "benefit2": {},
+        "benefit3": {},
+        "benefit4": {},
+        "benefit5": {},
+        "benefit6": {}
+    },
+    "telemetrySection":{
+        "title": "Where Telemetry and Security Meets",
+        "content": "GUARDIANTS ofrece una plataforma de telemetría avanzada que proporciona monitoreo en tiempo real de la ubicación, velocidad, estado del vehículo y otros datos críticos. Nuestra tecnología de vanguardia permite a los usuarios acceder a información detallada sobre sus vehículos desde cualquier lugar, brindando una visión completa para una gestión eficiente y segura.",
+        "bullet1": "",
+        "bullet2": "",
+        "bullet3": ""
+    },
+    "howdoesitworkSection":{
+        "title": "How does it work?",
+        "step1": {
+            "title": "Natural people",
+            "description": "Easily integrate GUARDIANTS with your vehicle in minutes."
+        },
+        "step2": {
+            "title": "Real-time monitoring",
+            "description": "Track your vehicle's location, speed, and status in real-time through our intuitive dashboard."
+        },
+        "step3": {
+            "title": "Advanced security",
+            "description": "Receive instant alerts for suspicious activity and take immediate action to protect your vehicle."
+        }
     }
 }

@@ -93,6 +93,37 @@
             background-color: #555;
         }
 
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            border: 1px solid #333;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .lang-btn.active:hover {
+            background-color: #555;
+        }
+
         /* Hero Section */
         .hero {
             background-color: #e8e8e8;
@@ -546,26 +577,30 @@
             <div class="brand-name">GOD's Tracker</div>
             <nav>
                 <ul>
-                    <li><a href="#home">{headers.home}</a></li>
-                    <li><a href="#about">{headers.about}</a></li>
-                    <li><a href="#how">{headers.how}</a></li>
-                    <li><a href="#faq">{headers.faq}</a></li>
-                    <li><a href="#contact">{headers.contact}</a></li>
+                    <li><a href="#home" data-i18n="headers.home">hola</a></li>
+                    <li><a href="#about" data-i18n="headers.about">About Us</a></li>
+                    <li><a href="#how" data-i18n="headers.how">How does it work?</a></li>
+                    <li><a href="#faq" data-i18n="headers.faq">FAQs</a></li>
+                    <li><a href="#contact" data-i18n="headers.contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
         <div class="header-right">
-            <button class="btn-auth btn-login">Login</button>
-            <button class="btn-auth btn-signup">Sign Up</button>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+            <button class="btn-auth btn-login" data-i18n="cta.login">Login</button>
+            <button class="btn-auth btn-signup" data-i18n="cta.signup">Sign Up</button>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-tagline">PREVENT | PROTECT | OPTIMIZE</div>
-            <h1>The new era of intelligent vehicle security with God's Tracker</h1>
-            <button class="btn-cta">Get Started</button>
+            <div class="hero-tagline" data-i18n="heroSection.tagline">Track Your Vehicle with GUARDIANTS</div>
+            <h1 data-i18n="heroSection.slogan">Real-time location monitoring, advanced security features, and seamless integration for your vehicle.</h1>
+            <button class="btn-cta" data-i18n="heroSection.cta">Get Started</button>
         </div>
     </section>
 
@@ -573,23 +608,23 @@
     <section class="mission" id="about">
         <div class="mission-graphic"></div>
         <div class="mission-content">
-            <h2>Mission</h2>
-            <p>At God's Tracker, we're revolutionizing vehicle security through intelligent, real-time monitoring and predictive analytics. Our mission is to protect what matters most to you with cutting-edge technology designed for the modern world.</p>
+            <h2 data-i18n="mission.title">Mission</h2>
+            <p data-i18n="mission.content">At GUARDIANTS, we're revolutionizing vehicle security through intelligent, real-time monitoring and predictive analytics. Our mission is to protect what matters most to you with cutting-edge technology designed for the modern world.</p>
         </div>
     </section>
 
     <!-- Vision Section -->
     <section class="vision">
         <div class="vision-content">
-            <h2>Vision</h2>
-            <p>We envision a world where every vehicle is protected with advanced intelligence. By combining real-time telemetry, predictive analytics, and seamless integration, we're building the foundation for smarter, safer roads. Every journey should be secure.</p>
+            <h2 data-i18n="vision.title">Vision</h2>
+            <p data-i18n="vision.content">Our vision is to create a safer and more connected world where every vehicle is protected by GUARDIANTS, empowering individuals and businesses with the confidence and peace of mind they deserve.</p>
         </div>
         <div class="vision-graphic"></div>
     </section>
 
     <!-- Benefits Section -->
     <section class="benefits">
-        <h2>Benefits</h2>
+        <h2 data-i18n="benefits.title">Benefits</h2>
         <div class="benefits-grid">
             <div class="benefit-card"></div>
             <div class="benefit-card"></div>
@@ -603,12 +638,11 @@
     <!-- Telemetry Section -->
     <section class="telemetry" id="how">
         <div class="telemetry-content">
-            <h2>Where telemetry and security meets</h2>
+            <h2 data-i18n="telemetrySection.title">Where Telemetry and Security Meets</h2>
             <ul class="telemetry-list">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipiscing elit</li>
-                <li>Sed do eiusmod tempor</li>
-                <li>Incididunt ut labore et dolore magna</li>
+                <li data-i18n="telemetrySection.bullet1">Lorem ipsum dolor sit amet</li>
+                <li data-i18n="telemetrySection.bullet2">Consectetur adipiscing elit</li>
+                <li data-i18n="telemetrySection.bullet3">Sed do eiusmod tempor</li>
             </ul>
         </div>
         <div class="telemetry-graphic"></div>
@@ -616,22 +650,22 @@
 
     <!-- How It Works Section -->
     <section class="how-it-works" id="how-works">
-        <h2>How does it work?</h2>
+        <h2 data-i18n="howdoesitworkSection.title">How does it work?</h2>
         <div class="how-grid">
             <div class="how-card">
                 <div class="how-card-icon"></div>
-                <h3>Natural people</h3>
-                <p>Easily integrate God's Tracker with your vehicle in minutes.</p>
+                <h3 data-i18n="howdoesitworkSection.step1.title">Natural people</h3>
+                <p data-i18n="howdoesitworkSection.step1.description">Easily integrate God's Tracker with your vehicle in minutes.</p>
             </div>
             <div class="how-card">
                 <div class="how-card-icon"></div>
-                <h3>Monitor</h3>
-                <p>Get real-time insights and alerts about your vehicle's security.</p>
+                <h3 data-i18n="howdoesitworkSection.step2.title">Monitor</h3>
+                <p data-i18n="howdoesitworkSection.step2.description">Get real-time insights and alerts about your vehicle's security.</p>
             </div>
             <div class="how-card">
                 <div class="how-card-icon"></div>
-                <h3>Protect</h3>
-                <p>Proactive security measures keep your vehicle safe 24/7.</p>
+                <h3 data-i18n="howdoesitworkSection.step3.title">Protect</h3>
+                <p data-i18n="howdoesitworkSection.step3.description">Proactive security measures keep your vehicle safe 24/7.</p>
             </div>
         </div>
     </section>
@@ -641,5 +675,110 @@
         <p>&copy; 2026 GUARDIANTS. All rights reserved.</p>
     </footer>
 
+    <script>
+        // i18n Configuration
+        const i18nConfig = {
+            defaultLanguage: 'en',
+            supportedLanguages: ['en', 'es']
+        };
+
+        // Store for translations
+        let translations = {
+            en: {},
+            es: {}
+        };
+
+        // Get nested value from object using dot notation
+        function getNestedValue(obj, path) {
+            if (!obj || Object.keys(obj).length === 0) return null;
+            return path.split('.').reduce((current, prop) => current?.[prop], obj);
+        }
+
+        // Apply translations to the page
+        function applyTranslations(language) {
+            // Verificación de seguridad: si el JSON está vacío, avisar en consola
+            if (Object.keys(translations[language]).length === 0) {
+                console.warn(`Las traducciones para ${language} están vacías. El fetch falló previamente.`);
+                return;
+            }
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const text = getNestedValue(translations[language], key);
+                
+                if (text) {
+                    element.innerHTML = text; // innerHTML es más seguro si tienes saltos de línea o formato
+                } else {
+                    console.warn(`Llave de traducción faltante: ${key}`);
+                }
+            });
+        }
+
+        // Set language and update UI
+        function setLanguage(language) {
+            if (!i18nConfig.supportedLanguages.includes(language)) {
+                language = i18nConfig.defaultLanguage;
+            }
+
+            // Save language preference
+            localStorage.setItem('language', language);
+
+            // Update active button de forma más limpia
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === language);
+            });
+
+            // Update document language
+            document.documentElement.lang = language;
+
+            // Apply translations
+            applyTranslations(language);
+        }
+
+        // Load translations from JSON files
+        async function loadTranslations() {
+            try {
+                // Cache-buster: asegura que el navegador siempre descargue la última versión del JSON
+                const cacheBuster = new Date().getTime();
+                
+                const [enResponse, esResponse] = await Promise.all([
+                    fetch(`./i18n/en.json?v=${cacheBuster}`),
+                    fetch(`./i18n/es.json?v=${cacheBuster}`)
+                ]);
+
+                if (!enResponse.ok || !esResponse.ok) {
+                    throw new Error("HTTP error - No se encontraron los archivos JSON");
+                }
+                
+                translations.en = await enResponse.json();
+                translations.es = await esResponse.json();
+                
+                // Initialize with saved language or default
+                const savedLanguage = localStorage.getItem('language') || i18nConfig.defaultLanguage;
+                setLanguage(savedLanguage);
+            } catch (error) {
+                console.error('Error crítico cargando traducciones:', error);
+                alert("Error cargando los idiomas.\\n\\nAsegúrate de estar utilizando un servidor local (como Live Server) y no estar abriendo el archivo HTML directamente desde la carpeta.");
+            }
+        }
+
+        // Add event listeners to language buttons
+        function initLanguageSwitcher() {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const language = btn.getAttribute('data-lang');
+                    setLanguage(language);
+                });
+            });
+        }
+
+        // Initialize i18n when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTranslations().then(() => {
+                initLanguageSwitcher();
+            });
+        });
+    </script>
 </body>
 </html>
