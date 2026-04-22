@@ -14,7 +14,7 @@
     },
     "heroSection": {
         "tagline": "PREVENIR | PROTEGER | OPTIMIZAR",
-        "slogan": "La nueva era de la seguridad y gestión inteligente de vehículos con el Rastreador de Dios.",
+        "slogan": "La nueva era de la seguridad inteligente vehicular con God's Tracker",
         "cta": "Comenzar"
     },
     "mission": {
@@ -23,36 +23,118 @@
     },
     "vision": {
         "title": "Visión",
-        "content": "Nuestra visión es consolidarnos como la plataforma líder en seguridad vehicular y gestión inteligente de activos a través de telemetría e IoT, elevando el estándar de protección contra el crimen técnico. Asimismo, aspiramos a que cada vehículo conectado a GuardiAnts opere como un sistema inteligente y autónomo capaz de anticipar riesgos, detectar interferencias, activar protocolos de salvaguarda y mantener al propietario o administrador siempre en control desde cualquier lugar. Con nuestro producto buscamos construir un ecosistema confiable, seguro y de alta disponibilidad que no solo aumente la recuperación y prevención de robos, sino que también impulse una movilidad más eficiente y rentable para personas y empresas, convirtiendo los datos en decisiones rápidas, claras y accionables en tiempo real."
+        "content": "GuardiAnts se está posicionando como un líder disruptivo en la industria de seguridad vehicular y gestión de activos al combinar telemetría avanzada con IoT (Internet de las Cosas). El enfoque central de la compañía va más allá del rastreo pasivo para crear un ecosistema inteligente y proactivo que empodera a los usuarios con control absoluto y en tiempo real sobre sus flotas o vehículos individuales."
     },
     "benefits": {
         "title": "Beneficios",
-        "benefit1": "Administre su flota con facilidad: GUARDIANTS ofrece una interfaz fácil de usar que le permite monitorear y gestionar sus vehículos sin esfuerzo, ahorrando tiempo y recursos.",
-        "benefit2": "Seguridad mejorada: GUARDIANTS ofrece características de seguridad avanzadas para proteger sus vehículos contra robos y uso no autorizado.",
-        "benefit3": "Información en tiempo real: Acceda instantáneamente a datos críticos del vehículo, permitiendo una toma de decisiones informada y una gestión proactiva.",
-        "benefit4": "Eficiencia de costos: Reduzca los costos operativos mediante una mejor gestión de flotas y una optimización en la asignación de recursos.",
-        "benefit5": "Garantía de cumplimiento: Asegure la adherencia a las normativas del sector con capacidades integrales de informes y documentación.",
-        "benefit6": "Experiencia fácil de usar: Disfrute de una experiencia fluida con nuestra plataforma intuitiva diseñada para la facilidad de uso."
+        "columns": [
+            {
+                "title": "Propietarios de vehículos",
+                "cards": [
+                    {
+                        "title": "Máximo ROI del activo",
+                        "description": "Elimine desperdicios operativos, reduzca costos de combustible y extienda la vida útil de sus vehículos mediante decisiones basadas en datos."
+                    },
+                    {
+                        "title": "Cuidado preventivo del activo",
+                        "description": "Identifique posibles fallas mecánicas antes de que se conviertan en reparaciones costosas con diagnósticos en tiempo real."
+                    }
+                ]
+            },
+            {
+                "title": "Empresas",
+                "cards": [
+                    {
+                        "title": "Protocolos de respuesta inmediata",
+                        "description": "Proteja sus activos con alertas de seguridad automatizadas y protocolos activos que se ejecutan en el momento en que se detecta una amenaza."
+                    },
+                    {
+                        "title": "Telemetría de precisión",
+                        "description": "Acceda a información precisa y en tiempo real sobre ubicación, rendimiento del motor y comportamiento del conductor."
+                    }
+                ]
+            },
+            {
+                "title": "Agencias gubernamentales",
+                "cards": [
+                    {
+                        "title": "Política de seguridad basada en evidencia",
+                        "description": "Utilice datos históricos de movilidad e incidentes para desarrollar políticas más inteligentes de tráfico urbano y seguridad pública."
+                    },
+                    {
+                        "title": "Coordinación de respuesta rápida",
+                        "description": "Coordine respuestas más rápidas usando información en tiempo real sobre ubicación del vehículo y contexto del incidente."
+                    }
+                ]
+            }
+        ]
     },
     "telemetrySection": {
         "title": "Donde la telemetría y la seguridad se encuentran",
-        "content": "GUARDIANTS ofrece una plataforma de telemetría avanzada que proporciona monitoreo en tiempo real de la ubicación, velocidad, estado del vehículo y otros datos críticos. Nuestra tecnología de vanguardia permite a los usuarios acceder a información detallada sobre sus vehículos desde cualquier lugar, brindando una visión completa para una gestión eficiente y segura.",
-        "bullet1": "Integración con red de área de controladora (CAN): GUARDIANTS se integra perfectamente con el bus CAN de su vehículo, permitiendo una recopilación y monitoreo exhaustivo de diversos parámetros como el rendimiento del motor, niveles de combustible y más.",
-        "bullet2": "Mapeo mediante sistema de información geográfica (GIS): Nuestra plataforma utiliza tecnología de mapeo GIS para proporcionar rastreo de ubicación en tiempo real y capacidades de geocercas, asegurando que siempre sepa dónde están sus vehículos y pueda establecer límites virtuales para mayor seguridad.",
-        "bullet3": "Alertas y notificaciones personalizadas: GUARDIANTS le permite configurar alertas y notificaciones personalizadas basadas en eventos o condiciones específicas, como movimiento no autorizado, exceso de velocidad o recordatorios de mantenimiento, manteniéndole informado y en control en todo momento. Otorgue permisos y mantenga un registro de los patrones de ruta."
+        "content": "Transformamos datos crudos del vehículo en inteligencia accionable. Nuestra plataforma no solo rastrea la ubicación: monitorea la salud del motor, patrones de conducción y eficiencia operativa, para que mantengas el control total de tus activos, 24/7.",
+        "bullet1": "Monitoreo predictivo de mantenimiento",
+        "bullet2": "Analítica de comportamiento de conducción",
+        "bullet3": "Alertas de seguridad instantáneas"
     },
     "howdoesitworkSection": {
         "title": "¿Cómo funciona?",
         "segment1": {
-            "title": "Personas naturales",
-            "description": "Integre fácilmente GUARDIANTS con su vehículo en minutos y vea cómo los datos de su vehículo cobran vida en nuestro panel fácil de usar, brindándole control total y tranquilidad."
+            "title": "Persona natural",
+            "description": "Personas que quieren proteger su vehículo, recibir alertas básicas y conocer la ubicación en tiempo real."
         },
         "segment2": {
-            "title": "Empresas y entidades gubernamentales",
-            "description": "Administre la ubicación de su flota, obtenga un sistema de aprobación completo e integre nuestro sistema a su infraestructura preexistente para una experiencia mejorada de seguridad y gestión de datos."
+            "title": "Empresas",
+            "description": "Empresas de todos los sectores, especialmente transporte de carga pesada, logística y también transporte público, para análisis más avanzados."
+        },
+        "segment3": {
+            "title": "Agencias gubernamentales",
+            "description": "Entidades del Estado como la policía y otros actores responsables de proteger activos y personal de forma segura y confiable. Se considera la instalación de servidores para este segmento en ubicaciones designadas."
         }
     },
+    "faq": {
+        "title": "Preguntas frecuentes",
+        "items": [
+            {
+                "question": "¿Qué es God's Tracker?",
+                "answer": "Una aplicación revolucionaria creada para transformar la seguridad vehicular mediante un sistema de monitoreo inteligente y telemetría avanzada, permitiendo recuperar el control absoluto de sus unidades en tiempo real."
+            },
+            {
+                "question": "¿Qué es God's Tracker?",
+                "answer": "God's Tracker ofrece alertas en tiempo real, visibilidad de ubicación e información de telemetría para que estés en control."
+            },
+            {
+                "question": "¿Qué es God's Tracker?",
+                "answer": "Diseñado para personas, empresas y casos de uso del sector público que requieren monitoreo confiable."
+            },
+            {
+                "question": "¿Qué es God's Tracker?",
+                "answer": "Si necesitas un despliegue a medida, contáctanos y te ayudamos a planificar la configuración adecuada."
+            }
+        ]
+    },
+    "contact": {
+        "form": {
+            "nameLabel": "Nombre - Apellido",
+            "phoneLabel": "Teléfono",
+            "emailLabel": "Correo",
+            "userTypeLabel": "Tipo de usuario",
+            "userTypeNatural": "Persona natural",
+            "userTypeCompanies": "Empresas",
+            "userTypeGovernment": "Agencias gubernamentales",
+            "messageLabel": "Mensaje",
+            "submit": "Enviar mensaje"
+        },
+        "info": {
+            "phone": "+51 977543006",
+            "email": "contact@godstracker.com"
+        }
+    },
+    "footer": {
+        "brand": "GOD'S TRACKER",
+        "location1": "Santiago de Surco",
+        "location2": "Lima - Perú"
+    },
     "rights": {
-        "content": "© 2026 GUARDIANTS. Todos los derechos reservados."
+        "content": "God's Tracker © 2025"
     }
 }

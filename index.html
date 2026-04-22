@@ -1,686 +1,1342 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>God's Tracker - Intelligent Vehicle Security</title>
     <style>
+        :root {
+            --text: #1a1a1a;
+            --muted: #666;
+            --bg: #f3f4f5;
+            --panel: #fff;
+            --panel-muted: #dedede;
+            --border: #1a1a1a;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: #333;
-            background-color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
         }
 
-        /* Navigation */
-        header {
-            background-color: #f5f5f5;
-            padding: 20px 60px;
+        a {
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        section[id] {
+            scroll-margin-top: 96px;
+        }
+
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(245, 245, 245, 0.92);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(6px);
+        }
+
+        .header-inner {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            gap: 28px;
+            padding: 16px 0;
         }
 
-        .header-left {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 14px;
+            text-decoration: none;
+            flex-shrink: 0;
         }
 
-        .logo {
-            border: 2px solid #333;
-            padding: 8px 12px;
-            font-weight: bold;
-            font-size: 12px;
-            min-width: 60px;
-            text-align: center;
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            background: #bdbdbd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .brand-mark img {
+            width: 34px;
+            height: auto;
+            display: block;
         }
 
         .brand-name {
             font-size: 18px;
-            font-weight: 600;
-            color: #333;
+            font-weight: 700;
+            letter-spacing: 0.2px;
         }
 
-        nav ul {
-            list-style: none;
+        .site-nav {
             display: flex;
-            gap: 30px;
+            gap: 26px;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
         }
 
-        nav a {
+        .site-nav a {
             text-decoration: none;
-            color: #333;
             font-size: 14px;
-            transition: color 0.3s;
+            font-weight: 500;
+            white-space: nowrap;
         }
 
-        nav a:hover {
-            color: #666;
+        .site-nav a:hover {
+            opacity: 0.75;
         }
 
-        .header-right {
+        .header-actions {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
         }
 
-        .btn-auth {
-            padding: 10px 20px;
-            border: none;
-            background: none;
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-label {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 26px;
+            flex: 0 0 46px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
             cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #d9d9d9;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            transition: 0.2s;
+            border-radius: 999px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            transition: 0.2s;
+            border-radius: 999px;
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translate(20px, -50%);
+        }
+
+        .switch input:focus-visible + .slider {
+            outline: 2px solid rgba(0, 0, 0, 0.5);
+            outline-offset: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid transparent;
             font-size: 14px;
-            transition: all 0.3s;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
         }
 
         .btn-login {
-            color: #333;
+            background: #e2e2e2;
+            color: var(--text);
+        }
+
+        .btn-login:hover {
+            background: #d6d6d6;
         }
 
         .btn-signup {
-            background-color: #333;
-            color: white;
-            border-radius: 4px;
+            background: #fff;
+            border-color: #d0d0d0;
+            color: var(--text);
         }
 
         .btn-signup:hover {
-            background-color: #555;
+            background: #f2f2f2;
         }
 
-        .language-switcher {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .lang-btn {
-            padding: 8px 12px;
-            border: 1px solid #333;
-            background: white;
-            color: #333;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .lang-btn.active {
-            background-color: #333;
-            color: white;
-        }
-
-        .lang-btn:hover {
-            background-color: #f0f0f0;
-        }
-
-        .lang-btn.active:hover {
-            background-color: #555;
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background-color: #e8e8e8;
-            padding: 100px 60px;
-            position: relative;
-            overflow: hidden;
-            min-height: 600px;
+            min-height: 650px;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            background-color: #d9d9d9;
+            background-image: linear-gradient(rgba(245, 245, 245, 0.72), rgba(245, 245, 245, 0.72)), url('assets/hero-bg.png');
+            background-size: cover;
+            background-position: center;
         }
 
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            background: linear-gradient(to right, #999, transparent);
-        }
-
-        .hero::before {
-            width: 600px;
-            height: 2px;
-            top: 25%;
-            left: -100px;
-            transform: rotate(-25deg);
-        }
-
-        .hero::after {
-            width: 600px;
-            height: 2px;
-            top: 50%;
-            right: -200px;
-            transform: rotate(25deg);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
+        .hero-inner {
+            padding: 110px 0;
         }
 
         .hero-tagline {
-            font-size: 12px;
-            color: #666;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 40px;
-            color: #1a1a1a;
+        .hero-title {
+            margin-top: 18px;
+            margin-bottom: 34px;
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.1;
+            max-width: 820px;
         }
 
         .btn-cta {
-            display: inline-block;
-            padding: 14px 40px;
-            background-color: #fff;
-            color: #333;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            border: 1px solid #ddd;
-            transition: all 0.3s;
-            cursor: pointer;
-            font-size: 14px;
+            background: #f5f5f5;
+            border-color: #d6d6d6;
+            padding: 14px 44px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
         }
 
         .btn-cta:hover {
-            background-color: #f0f0f0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: #ededed;
         }
 
-        /* Mission Section */
-        .mission {
-            background-color: #fff;
-            padding: 80px 60px;
-            display: flex;
-            gap: 60px;
-            align-items: center;
+        /* Sections */
+        .section {
+            padding: 86px 0;
+            background: var(--bg);
         }
 
-        .mission-graphic {
-            width: 300px;
-            height: 200px;
-            background-color: #d3d3d3;
-            border-radius: 8px;
-            position: relative;
-            flex-shrink: 0;
+        .section--white {
+            background: #f6f7f8;
         }
 
-        .mission-graphic::before,
-        .mission-graphic::after {
-            content: '';
-            position: absolute;
-            background: linear-gradient(to right, #999, transparent);
-        }
-
-        .mission-graphic::before {
-            width: 250px;
-            height: 2px;
-            top: 30%;
-            left: -50px;
-            transform: rotate(-25deg);
-        }
-
-        .mission-graphic::after {
-            width: 250px;
-            height: 2px;
-            top: 60%;
-            right: -100px;
-            transform: rotate(25deg);
-        }
-
-        .mission-content h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-
-        .mission-content p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        /* Vision Section */
-        .vision {
-            background-color: #f9f9f9;
-            padding: 80px 60px;
-            display: flex;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .vision-content {
-            flex: 1;
-        }
-
-        .vision-content h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-
-        .vision-content p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .vision-graphic {
-            width: 300px;
-            height: 200px;
-            background-color: #d3d3d3;
-            border-radius: 8px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .vision-graphic::before,
-        .vision-graphic::after {
-            content: '';
-            position: absolute;
-            background: linear-gradient(to right, #999, transparent);
-        }
-
-        .vision-graphic::before {
-            width: 250px;
-            height: 2px;
-            top: 30%;
-            right: -50px;
-            transform: rotate(25deg);
-        }
-
-        .vision-graphic::after {
-            width: 250px;
-            height: 2px;
-            bottom: 30%;
-            left: -100px;
-            transform: rotate(-25deg);
-        }
-
-        /* Benefits Section */
-        .benefits {
-            background-color: #fff;
-            padding: 80px 60px;
-        }
-
-        .benefits h2 {
-            font-size: 36px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #1a1a1a;
-        }
-
-        .benefits-grid {
+        .split {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .benefit-card {
-            background-color: #e8e8e8;
-            border-radius: 8px;
-            height: 150px;
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-
-        /* Telemetry Section */
-        .telemetry {
-            background-color: #f9f9f9;
-            padding: 80px 60px;
-            display: flex;
-            gap: 60px;
+            grid-template-columns: 1.08fr 1fr;
+            gap: 70px;
             align-items: center;
         }
 
-        .telemetry-content {
+        .split + .split {
+            margin-top: 70px;
+        }
+
+        .split--reverse {
+            grid-template-columns: 1fr 1.08fr;
+        }
+
+        .copy h2 {
+            font-size: 44px;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .copy p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--muted);
+            max-width: 560px;
+        }
+
+        .media {
+            border-radius: 0px;
+            overflow: hidden;
+            background: #d3d3d3;
+            box-shadow: var(--shadow);
+            height: 260px;
+        }
+
+        .media--tall {
+            height: 340px;
+        }
+
+        .media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 56px;
+        }
+
+        .section-heading::before,
+        .section-heading::after {
+            content: '';
             flex: 1;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.45);
         }
 
-        .telemetry-content h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: #1a1a1a;
-            line-height: 1.3;
+        .section-heading h2 {
+            font-size: 34px;
+            font-weight: 900;
+            text-align: center;
         }
 
-        .telemetry-list {
+        /* How does it work */
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--panel);
+            border-radius: 24px;
+            padding: 26px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-image {
+            border-radius: 18px;
+            overflow: hidden;
+            background: #d3d3d3;
+            height: 150px;
+            margin-bottom: 18px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        /* Telemetry */
+        .telemetry-copy h2 {
+            font-size: 44px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            max-width: 520px;
+        }
+
+        .telemetry-copy p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--muted);
+            margin-bottom: 18px;
+            max-width: 520px;
+        }
+
+        .feature-list {
             list-style: none;
         }
 
-        .telemetry-list li {
-            padding: 12px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #666;
+        .feature-list li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 10px 0;
             font-size: 15px;
+            color: var(--text);
         }
 
-        .telemetry-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
-            background-color: #ccc;
-            border-radius: 2px;
+        .feature-list li::before {
+            content: '✓';
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+            background: #cfcfcf;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 900;
+            margin-top: 2px;
+            flex: 0 0 18px;
         }
 
-        .telemetry-graphic {
-            width: 300px;
-            height: 250px;
-            background-color: #d3d3d3;
-            border-radius: 8px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .telemetry-graphic::before,
-        .telemetry-graphic::after {
-            content: '';
-            position: absolute;
-            background: linear-gradient(to right, #999, transparent);
-        }
-
-        .telemetry-graphic::before {
-            width: 280px;
-            height: 2px;
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%) rotate(-20deg);
-        }
-
-        .telemetry-graphic::after {
-            width: 280px;
-            height: 2px;
-            bottom: 30%;
-            left: 50%;
-            transform: translateX(-50%) rotate(20deg);
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            background-color: #fff;
-            padding: 80px 60px;
-        }
-
-        .how-it-works h2 {
-            font-size: 36px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #1a1a1a;
-        }
-
-        .how-grid {
+        /* Benefits */
+        .benefits-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 32px;
         }
 
-        .how-card {
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            padding: 30px;
+        .benefits-column h3 {
             text-align: center;
-            transition: all 0.3s;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 22px;
         }
 
-        .how-card:hover {
-            background-color: #e8e8e8;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
+        .benefit-tile {
+            background: var(--panel-muted);
+            border-radius: 24px;
+            padding: 26px 22px;
+            text-align: center;
         }
 
-        .how-card-icon {
-            width: 120px;
-            height: 80px;
-            background-color: #d3d3d3;
-            border-radius: 6px;
-            margin: 0 auto 20px;
-            position: relative;
+        .benefit-tile + .benefit-tile {
+            margin-top: 26px;
         }
 
-        .how-card-icon::before,
-        .how-card-icon::after {
-            content: '';
-            position: absolute;
-            background: linear-gradient(to right, #999, transparent);
+        .benefit-icon {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
         }
 
-        .how-card-icon::before {
-            width: 100px;
-            height: 2px;
-            top: 25%;
-            left: 10px;
-            transform: rotate(-25deg);
+        .benefit-icon svg {
+            width: 40px;
+            height: 40px;
+            display: block;
         }
 
-        .how-card-icon::after {
-            width: 100px;
-            height: 2px;
-            top: 60%;
-            right: 10px;
-            transform: rotate(25deg);
+        .benefit-title {
+            font-size: 13px;
+            font-weight: 900;
+            margin-bottom: 10px;
         }
 
-        .how-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1a1a1a;
-        }
-
-        .how-card p {
-            font-size: 14px;
-            color: #666;
+        .benefit-text {
+            font-size: 12px;
             line-height: 1.5;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        details.faq-item {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        details.faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        details.faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            background: #d9d9d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            flex: 0 0 34px;
+        }
+
+        .faq-question {
+            font-weight: 900;
+            font-size: 16px;
+            flex: 1;
+        }
+
+        .faq-chevron {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            background: #d9d9d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 34px;
+        }
+
+        .faq-chevron svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        details.faq-item[open] .faq-chevron svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 22px 18px 70px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .contact-form {
+            max-width: 520px;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label,
+        .field .field-label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            background: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .btn-send {
+            background: #e9e9e9;
+            border-color: #d2d2d2;
+            color: var(--text);
+            padding: 12px 22px;
+        }
+
+        .btn-send:hover {
+            background: #dedede;
+        }
+
+        .contact-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            background: #d3d3d3;
+            height: 360px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            opacity: 0.92;
+        }
+
+        .contact-meta {
+            position: absolute;
+            right: 46px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+        }
+
+        .meta-item a {
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .meta-item a:hover {
+            text-decoration: underline;
+        }
+
+        .meta-icon {
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 22px;
+        }
+
+        .meta-icon svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #4b4b4b;
+            color: #f5f5f5;
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 34px;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+
+        .footer-location {
+            font-size: 14px;
+            opacity: 0.95;
+            margin: 6px 0;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin: 34px 0;
+        }
+
+        .footer-social a {
+            width: 56px;
+            height: 56px;
+            border-radius: 999px;
+            background: #2f2f2f;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #f5f5f5;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .footer-social a:hover {
+            opacity: 0.9;
+        }
+
+        .footer-social svg {
+            width: 26px;
+            height: 26px;
+            display: block;
+        }
+
+        .footer-rights {
+            font-size: 12px;
+            opacity: 0.85;
+            margin-top: 10px;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 20px;
-                gap: 20px;
+        @media (max-width: 980px) {
+            .container {
+                padding: 0 22px;
             }
 
-            .header-left {
-                width: 100%;
-                justify-content: space-between;
+            section[id] {
+                scroll-margin-top: 150px;
             }
 
-            nav ul {
-                gap: 15px;
-                font-size: 12px;
+            .header-inner {
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            .hero {
-                padding: 50px 20px;
-                min-height: auto;
+            .site-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
             }
 
-            .hero h1 {
-                font-size: 32px;
+            .hero-inner {
+                padding: 86px 0;
             }
 
-            .mission,
-            .vision,
-            .telemetry {
-                flex-direction: column;
-                padding: 40px 20px;
+            .hero-title {
+                font-size: 40px;
             }
 
-            .mission-graphic,
-            .vision-graphic,
-            .telemetry-graphic {
-                width: 100%;
-                height: 150px;
+            .split,
+            .split--reverse,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
 
-            .benefits,
-            .how-it-works {
-                padding: 40px 20px;
+            .copy h2,
+            .telemetry-copy h2 {
+                font-size: 34px;
             }
 
-            .benefits-grid,
             .how-grid {
                 grid-template-columns: 1fr;
             }
 
-            .benefits h2,
-            .how-it-works h2 {
+            .benefits-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-meta {
+                right: 18px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            html,
+            body {
+                overflow-x: hidden;
+            }
+
+            .header-inner {
+                justify-content: space-between;
+                gap: 14px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+            .site-nav {
+                width: 100%;
+                order: 3;
+                gap: 12px;
+                padding-top: 8px;
+            }
+
+            .header-actions {
+                order: 2;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 520px;
+            }
+
+            .hero-inner {
+                padding: 70px 0;
+            }
+
+            .hero-tagline {
+                letter-spacing: 2px;
+                font-size: 12px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+                margin-bottom: 22px;
+            }
+
+            .btn-cta {
+                padding: 12px 26px;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .section-heading {
+                gap: 14px;
+                margin-bottom: 40px;
+            }
+
+            .section-heading h2 {
                 font-size: 28px;
             }
 
-            .mission-content h2,
-            .vision-content h2,
-            .telemetry-content h2 {
+            .copy h2,
+            .telemetry-copy h2 {
+                font-size: 30px;
+            }
+
+            .copy p,
+            .telemetry-copy p {
+                max-width: none;
+            }
+
+            .media {
+                height: 220px;
+            }
+
+            .media--tall {
+                height: 280px;
+            }
+
+            details.faq-item summary {
+                padding: 16px 16px;
+            }
+
+            .faq-answer {
+                padding: 0 16px 16px 16px;
+            }
+
+            .contact-card {
+                height: 320px;
+            }
+
+            .contact-form {
+                max-width: none;
+            }
+
+            .contact-meta {
+                position: static;
+                transform: none;
+                padding: 14px;
+                margin: 14px;
+                border-radius: 18px;
+                background: rgba(245, 245, 245, 0.92);
+            }
+
+            .meta-item a {
+                font-size: 14px;
+            }
+
+            .footer-social {
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            section[id] {
+                scroll-margin-top: 170px;
+            }
+
+            .hero {
+                min-height: 460px;
+            }
+
+            .hero-inner {
+                padding: 60px 0;
+            }
+
+            .hero-title {
+                font-size: 30px;
+            }
+
+            .copy p,
+            .telemetry-copy p,
+            .feature-list li {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .footer-brand {
                 font-size: 28px;
+            }
+
+            .footer-social a {
+                width: 48px;
+                height: 48px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Navigation Header -->
-    <header>
-        <div class="header-left">
-            <div class="logo">
-                <img src="logo guardiants - short.png" alt="God's Tracker Logo" width="80">
-            </div>
-            <div class="brand-name">GOD's Tracker</div>
-            <nav>
-                <ul>
-                    <li><a href="#home" data-i18n="headers.home">hola</a></li>
-                    <li><a href="#about" data-i18n="headers.about">About Us</a></li>
-                    <li><a href="#how" data-i18n="headers.how">How does it work?</a></li>
-                    <li><a href="#faq" data-i18n="headers.faq">FAQs</a></li>
-                    <li><a href="#contact" data-i18n="headers.contact">Contact</a></li>
-                </ul>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#home" aria-label="God's Tracker">
+                <span class="brand-mark">
+                    <img src="logo guardiants - short.png" alt="">
+                </span>
+                <span class="brand-name">God's Tracker</span>
+            </a>
+
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#home" data-i18n="headers.home">Home</a>
+                <a href="#about" data-i18n="headers.about">About Us</a>
+                <a href="#how" data-i18n="headers.how">How does it work?</a>
+                <a href="#faq" data-i18n="headers.faq">FAQs</a>
+                <a href="#contact" data-i18n="headers.contact">Contact</a>
             </nav>
-        </div>
-        <div class="header-right">
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="es">ES</button>
+
+            <div class="header-actions">
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <span class="lang-label" aria-hidden="true">EN</span>
+                    <label class="switch">
+                        <input id="langToggle" type="checkbox" aria-label="Toggle language">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="lang-label" aria-hidden="true">ES</span>
+                </div>
+                <a class="btn btn-login" href="#" data-i18n="cta.login">Login</a>
+                <a class="btn btn-signup" href="#" data-i18n="cta.signup">Sign Up</a>
             </div>
-            <button class="btn-auth btn-login" data-i18n="cta.login">Login</button>
-            <button class="btn-auth btn-signup" data-i18n="cta.signup">Sign Up</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-tagline" data-i18n="heroSection.tagline">Track Your Vehicle with GUARDIANTS</div>
-            <h1 data-i18n="heroSection.slogan">Real-time location monitoring, advanced security features, and seamless integration for your vehicle.</h1>
-            <button class="btn-cta" data-i18n="heroSection.cta">Get Started</button>
-        </div>
-    </section>
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-inner">
+                <p class="hero-tagline" data-i18n="heroSection.tagline">PREVENT | PROTECT | OPTIMIZE</p>
+                <h1 class="hero-title" data-i18n="heroSection.slogan">The new era of intelligent vehicle security with God's Tracker</h1>
+                <a class="btn btn-cta" href="#contact" data-i18n="heroSection.cta">Get Started</a>
+            </div>
+        </section>
 
-    <!-- Mission Section -->
-    <section class="mission" id="about">
-        <div class="mission-graphic"></div>
-        <div class="mission-content">
-            <h2 data-i18n="mission.title">Mission</h2>
-            <p data-i18n="mission.content">At GUARDIANTS, we're revolutionizing vehicle security through intelligent, real-time monitoring and predictive analytics. Our mission is to protect what matters most to you with cutting-edge technology designed for the modern world.</p>
-        </div>
-    </section>
+        <section class="section section--white" id="about">
+            <div class="container">
+                <div class="split">
+                    <div class="media">
+                        <img src="assets/mission.png" alt="Mission" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                    <div class="copy">
+                        <h2 data-i18n="mission.title">Mission</h2>
+                        <p data-i18n="mission.content">Our mission is to transform vehicle security through an intelligent monitoring system and advanced telemetry, allowing our target segments to regain absolute control of their units in real time.</p>
+                    </div>
+                </div>
 
-    <!-- Vision Section -->
-    <section class="vision">
-        <div class="vision-content">
-            <h2 data-i18n="vision.title">Vision</h2>
-            <p data-i18n="vision.content">Our vision is to create a safer and more connected world where every vehicle is protected by GUARDIANTS, empowering individuals and businesses with the confidence and peace of mind they deserve.</p>
-        </div>
-        <div class="vision-graphic"></div>
-    </section>
+                <div class="split split--reverse">
+                    <div class="copy">
+                        <h2 data-i18n="vision.title">Vision</h2>
+                        <p data-i18n="vision.content">GuardiAnts is positioning itself as a disruptive leader in the vehicle security and asset management industry by merging advanced telemetry with IoT (Internet of Things).</p>
+                    </div>
+                    <div class="media">
+                        <img src="assets/vision.png" alt="Vision" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <h2 data-i18n="benefits.title">Benefits</h2>
-            <div class="benefits-grid">
-                <div class="how-card">
-                <p data-i18n="data-i18n="benefits.benefit1"">Manage your fleet's location, get a full aprobation system and integrate our system to your preexisting infraestructure for an enhanced data security and management experience.</p>
-            </div>
-            <div class="how-card">
-                <p data-i18n="benefits.benefit2">Enhanced Security: GUARDIANTS offers advanced security features to protect your vehicles from theft and unauthorized use.</p>
-            </div>
-            <div class="how-card">
-                <p data-i18n="benefits.benefit3">Real-time Insights: Get instant access to critical vehicle data, enabling informed decision-making and proactive management.</p>
-            </div>
-            <div class="how-card">    
-                <p data-i18n="benefits.benefit4">Real-time Insights: Get instant access to critical vehicle data, enabling informed decision-making and proactive management.</p>
-            </div>
-            <div class="how-card">
-                <p data-i18n="benefits.benefit5">Compliance Assurance: Ensure adherence to industry regulations with comprehensive reporting and documentation capabilities.</p>
-            </div>
-            <div class="how-card">
-                <p data-i18n="benefits.benefit6">User-Friendly Experience: Enjoy a seamless experience with our intuitive platform designed for ease of use.</p>
-            </div>
-        </div>
-    </section>
+        <section class="section" id="how">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 data-i18n="howdoesitworkSection.title">How does it work?</h2>
+                </div>
 
-    <!-- Telemetry Section -->
-    <section class="telemetry" id="how">
-        <div class="telemetry-content">
-            <h2 data-i18n="telemetrySection.title">Where Telemetry and Security Meets</h2>
-            <ul class="telemetry-list">
-                <li data-i18n="telemetrySection.bullet1">Lorem ipsum dolor sit amet</li>
-                <li data-i18n="telemetrySection.bullet2">Consectetur adipiscing elit</li>
-                <li data-i18n="telemetrySection.bullet3">Sed do eiusmod tempor</li>
-            </ul>
-        </div>
-        <div class="telemetry-graphic"></div>
-    </section>
+                <div class="how-grid">
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="assets/how-natural-person.png" alt="Natural Person" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <h3 data-i18n="howdoesitworkSection.segment1.title">Natural Person</h3>
+                        <p data-i18n="howdoesitworkSection.segment1.description">Individuals who want to protect their vehicle, receive basic alerts, and know the vehicle's location in real time.</p>
+                    </article>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-works">
-        <h2 data-i18n="howdoesitworkSection.title">How does it work?</h2>
-        <div class="how-grid">
-            <div class="how-card">
-                <div class="how-card-icon"></div>
-                <h3 data-i18n="howdoesitworkSection.segment1.title">Natural people</h3>
-                <p data-i18n="howdoesitworkSection.segment1.description">Easily integrate God's Tracker with your vehicle in minutes.</p>
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="assets/how-companies.png" alt="Companies" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <h3 data-i18n="howdoesitworkSection.segment2.title">Companies</h3>
+                        <p data-i18n="howdoesitworkSection.segment2.description">Companies from all sectors, especially those in heavy freight transport, logistics companies, as well as public transport, for more advanced analysis.</p>
+                    </article>
+                </div>
             </div>
-            <div class="how-card">
-                <div class="how-card-icon"></div>
-                <h3 data-i18n="howdoesitworkSection.segment2.title">Enterprises and Governmental entities</h3>
-                <p data-i18n="howdoesitworkSection.segment2.description">Manage your fleet's location, get a full aprobation system and integrate our system to your preexisting infraestructure for an enhanced data security and management experience.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer style="background-color: #f5f5f5; padding: 40px 60px; text-align: center; color: #666; font-size: 14px;">
-        <p data-i18n="rights.content"></p>
+        <section class="section section--white" id="telemetry">
+            <div class="container">
+                <div class="split">
+                    <div class="telemetry-copy">
+                        <h2 data-i18n="telemetrySection.title">Where telemetry and security meets</h2>
+                        <p data-i18n="telemetrySection.content">We transform raw vehicle data into actionable intelligence. Our platform doesn't just track location: it monitors engine health, driving patterns, and operational efficiency.</p>
+                        <ul class="feature-list">
+                            <li data-i18n="telemetrySection.bullet1">Predictive Maintenance Monitoring</li>
+                            <li data-i18n="telemetrySection.bullet2">Driving Behavior Analytics</li>
+                            <li data-i18n="telemetrySection.bullet3">Instant Security Alerts</li>
+                        </ul>
+                    </div>
+                    <div class="media media--tall">
+                        <img src="assets/telemetry-dashboard.png" alt="Telemetry dashboard" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="benefits">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 data-i18n="benefits.title">Benefits</h2>
+                </div>
+
+                <div class="benefits-columns">
+                    <div class="benefits-column">
+                        <h3 data-i18n="benefits.columns.0.title">Individual Vehicle Owners</h3>
+
+                        <div class="benefit-tile">
+                            <div class="benefit-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="8"></circle>
+                                    <path d="M9.5 10.2c.4-1 1.4-1.7 2.6-1.7 1.6 0 2.9 1.1 2.9 2.5 0 2-3.2 2-3.2 3.9"></path>
+                                    <path d="M12 17.8h.01"></path>
+                                </svg>
+                            </div>
+                            <div class="benefit-title" data-i18n="benefits.columns.0.cards.0.title">Maximized Asset ROI</div>
+                            <div class="benefit-text" data-i18n="benefits.columns.0.cards.0.description">Eliminate operational waste and extend vehicle lifespan through data-driven decisions.</div>
+                        </div>
+
+                        <div class="benefit-tile">
+                            <div class="benefit-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 3l7 4v6c0 5-3.5 8-7 8s-7-3-7-8V7l7-4z"></path>
+                                    <path d="M9.5 12l1.8 1.8L15 10"></path>
+                                </svg>
+                            </div>
+                            <div class="benefit-title" data-i18n="benefits.columns.0.cards.1.title">Preventive Asset Care</div>
+                            <div class="benefit-text" data-i18n="benefits.columns.0.cards.1.description">Identify potential mechanical issues before they become costly repairs.</div>
+                        </div>
+                    </div>
+
+                    <div class="benefits-column">
+                        <h3 data-i18n="benefits.columns.1.title">Companies</h3>
+
+                        <div class="benefit-tile">
+                            <div class="benefit-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 3l7 4v6c0 5-3.5 8-7 8s-7-3-7-8V7l7-4z"></path>
+                                    <path d="M9 13h6"></path>
+                                    <path d="M12 10v6"></path>
+                                </svg>
+                            </div>
+                            <div class="benefit-title" data-i18n="benefits.columns.1.cards.0.title">Immediate Response Protocols</div>
+                            <div class="benefit-text" data-i18n="benefits.columns.1.cards.0.description">Defend your assets with automated alerts and active protocols that trigger the moment a threat is detected.</div>
+                        </div>
+
+                        <div class="benefit-tile">
+                            <div class="benefit-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 6h16"></path>
+                                    <path d="M4 10h16"></path>
+                                    <path d="M4 14h10"></path>
+                                    <path d="M4 18h10"></path>
+                                    <path d="M16 14l4 4"></path>
+                                    <path d="M20 14l-4 4"></path>
+                                </svg>
+                            </div>
+                            <div class="benefit-title" data-i18n="benefits.columns.1.cards.1.title">Precision Telemetry Data</div>
+                            <div class="benefit-text" data-i18n="benefits.columns.1.cards.1.description">Access accurate, real-time insights on vehicle location, engine performance, and driver behavior.</div>
+                        </div>
+                    </div>
+
+                    <div class="benefits-column">
+                        <h3 data-i18n="benefits.columns.2.title">Government agencies</h3>
+
+                        <div class="benefit-tile">
+                            <div class="benefit-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 3h10v4H7z"></path>
+                                    <path d="M6 7h12v14H6z"></path>
+                                    <path d="M9 11h6"></path>
+                                    <path d="M9 15h6"></path>
+                                </svg>
+                            </div>
+                            <div class="benefit-title" data-i18n="benefits.columns.2.cards.0.title">Evidence-Based Security Policy</div>
+                            <div class="benefit-text" data-i18n="benefits.columns.2.cards.0.description">Utilize historical mobility and incident data to develop smarter urban traffic and public safety policies.</div>
+                        </div>
+
+                        <div class="benefit-tile">
+                            <div class="benefit-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12a9 9 0 0 1-9 9"></path>
+                                    <path d="M3 12a9 9 0 0 1 9-9"></path>
+                                    <path d="M8 12h8"></path>
+                                    <path d="M13 7l5 5-5 5"></path>
+                                </svg>
+                            </div>
+                            <div class="benefit-title" data-i18n="benefits.columns.2.cards.1.title">Rapid Response Coordination</div>
+                            <div class="benefit-text" data-i18n="benefits.columns.2.cards.1.description">Coordinate faster responses using real-time insights on vehicle location and incident context.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--white" id="faq">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 data-i18n="faq.title">Frequently asked questions</h2>
+                </div>
+
+                <div class="faq-list">
+                    <details class="faq-item" open>
+                        <summary>
+                            <span class="faq-number">1</span>
+                            <span class="faq-question" data-i18n="faq.items.0.question">What is God's Tracker?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="faq-answer" data-i18n="faq.items.0.answer">A revolutionary app made to transform vehicle security through an intelligent monitoring system and advanced telemetry.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-number">2</span>
+                            <span class="faq-question" data-i18n="faq.items.1.question">What is God's Tracker?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="faq-answer" data-i18n="faq.items.1.answer">God's Tracker provides real-time alerts, location visibility, and telemetry insights to keep you in control.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-number">3</span>
+                            <span class="faq-question" data-i18n="faq.items.2.question">What is God's Tracker?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="faq-answer" data-i18n="faq.items.2.answer">Designed for individuals, companies, and public-sector use cases that require reliable monitoring.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-number">4</span>
+                            <span class="faq-question" data-i18n="faq.items.3.question">What is God's Tracker?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="faq-answer" data-i18n="faq.items.3.answer">If you need a tailored deployment, contact us and we can help you plan the right setup.</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <form class="contact-form" action="#" method="post">
+                        <div class="field">
+                            <label for="fullName" data-i18n="contact.form.nameLabel">Name - Last Name</label>
+                            <input id="fullName" name="fullName" type="text" autocomplete="name">
+                        </div>
+
+                        <div class="field">
+                            <label for="phone" data-i18n="contact.form.phoneLabel">Phone</label>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel">
+                        </div>
+
+                        <div class="field">
+                            <label for="email" data-i18n="contact.form.emailLabel">Email</label>
+                            <input id="email" name="email" type="email" autocomplete="email">
+                        </div>
+
+                        <div class="field">
+                            <span class="field-label" data-i18n="contact.form.userTypeLabel">User type</span>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="userType" value="natural">
+                                    <span data-i18n="contact.form.userTypeNatural">Natural Person</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="userType" value="companies">
+                                    <span data-i18n="contact.form.userTypeCompanies">Companies</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="userType" value="government">
+                                    <span data-i18n="contact.form.userTypeGovernment">Government agencies</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="message" data-i18n="contact.form.messageLabel">Message</label>
+                            <textarea id="message" name="message"></textarea>
+                        </div>
+
+                        <button class="btn btn-send" type="submit" data-i18n="contact.form.submit">Send Message</button>
+                    </form>
+
+                    <div class="contact-card">
+                        <img src="assets/contact.png" alt="Contact" loading="lazy" onerror="this.style.display='none'">
+                        <div class="contact-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.3a2 2 0 0 1-.5 2.1L9 10a16 16 0 0 0 5 5l.9-1.1a2 2 0 0 1 2.1-.5c.7.3 1.5.5 2.3.6A2 2 0 0 1 22 16.9z"></path>
+                                    </svg>
+                                </span>
+                                <a href="tel:+51977543006" data-i18n="contact.info.phone">+51 977543006</a>
+                            </div>
+
+                            <div class="meta-item">
+                                <span class="meta-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16v16H4z"></path>
+                                        <path d="M22 6 12 13 2 6"></path>
+                                    </svg>
+                                </span>
+                                <a href="mailto:contact@godstracker.com" data-i18n="contact.info.email">contact@godstracker.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-brand" data-i18n="footer.brand">GOD'S TRACKER</div>
+            <div class="footer-location" data-i18n="footer.location1">Santiago de Surco</div>
+            <div class="footer-location" data-i18n="footer.location2">Lima - Perú</div>
+
+            <div class="footer-social" aria-label="Social links">
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="4" />
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M17.5 6.5h.01" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M6.5 6.5A1.5 1.5 0 1 1 5 5a1.5 1.5 0 0 1 1.5 1.5zM5.2 9H7.8v10H5.2V9zM10 9h2.5v1.4h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V19h-2.6v-5c0-1.2 0-2.7-1.7-2.7-1.7 0-2 1.3-2 2.6V19H10V9z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer-rights" data-i18n="rights.content">God's Tracker © 2025</div>
+        </div>
     </footer>
+
+    <script src="./i18n/en.js"></script>
+    <script src="./i18n/es.js"></script>
 
     <script>
         // i18n Configuration
@@ -703,7 +1359,6 @@
 
         // Apply translations to the page
         function applyTranslations(language) {
-            // Verificación de seguridad: si el JSON está vacío, avisar en consola
             if (Object.keys(translations[language]).length === 0) {
                 console.warn(`Las traducciones para ${language} están vacías. El fetch falló previamente.`);
                 return;
@@ -713,9 +1368,9 @@
             elements.forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 const text = getNestedValue(translations[language], key);
-                
+
                 if (text) {
-                    element.innerHTML = text; // innerHTML es más seguro si tienes saltos de línea o formato
+                    element.innerHTML = text;
                 } else {
                     console.warn(`Llave de traducción faltante: ${key}`);
                 }
@@ -728,64 +1383,84 @@
                 language = i18nConfig.defaultLanguage;
             }
 
-            // Save language preference
             localStorage.setItem('language', language);
-
-            // Update active button de forma más limpia
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === language);
-            });
-
-            // Update document language
             document.documentElement.lang = language;
-
-            // Apply translations
             applyTranslations(language);
+
+            const langToggle = document.getElementById('langToggle');
+            if (langToggle && langToggle instanceof HTMLInputElement) {
+                langToggle.checked = language === 'es';
+            }
+        }
+
+        function resolveInitialLanguage() {
+            const savedLanguage = localStorage.getItem('language');
+            const browserLanguage = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+            return savedLanguage || browserLanguage || i18nConfig.defaultLanguage;
+        }
+
+        function applyInlineFallbackTranslations() {
+            const inline = window.__i18n;
+            if (inline && inline.en && inline.es) {
+                translations.en = inline.en;
+                translations.es = inline.es;
+                return true;
+            }
+            return false;
         }
 
         // Load translations from JSON files
         async function loadTranslations() {
+            const initialLanguage = resolveInitialLanguage();
+
             try {
-                // Cache-buster: asegura que el navegador siempre descargue la última versión del JSON
                 const cacheBuster = new Date().getTime();
-                
+
                 const [enResponse, esResponse] = await Promise.all([
                     fetch(`./i18n/en.json?v=${cacheBuster}`),
                     fetch(`./i18n/es.json?v=${cacheBuster}`)
                 ]);
 
                 if (!enResponse.ok || !esResponse.ok) {
-                    throw new Error("HTTP error - No se encontraron los archivos JSON");
+                    throw new Error('HTTP error - No se encontraron los archivos JSON');
                 }
-                
+
                 translations.en = await enResponse.json();
                 translations.es = await esResponse.json();
-                
-                // Initialize with saved language or default
-                const savedLanguage = localStorage.getItem('language') || i18nConfig.defaultLanguage;
-                setLanguage(savedLanguage);
+
+                setLanguage(initialLanguage);
             } catch (error) {
+                if (applyInlineFallbackTranslations()) {
+                    setLanguage(initialLanguage);
+                    return;
+                }
+
                 console.error('Error crítico cargando traducciones:', error);
-                alert("Error cargando los idiomas.\\n\\nAsegúrate de estar utilizando un servidor local (como Live Server) y no estar abriendo el archivo HTML directamente desde la carpeta.");
+                alert('Error cargando los idiomas.\n\nSi abriste el HTML directamente (file://), asegúrate de incluir i18n/en.js y i18n/es.js.\nSi estás usando un servidor (por ejemplo Live Server), verifica que /i18n/en.json y /i18n/es.json existan y sean accesibles.');
             }
         }
 
-        // Add event listeners to language buttons
-        function initLanguageSwitcher() {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const language = btn.getAttribute('data-lang');
-                    setLanguage(language);
-                });
-            });
-        }
-
-        // Initialize i18n when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             loadTranslations().then(() => {
-                initLanguageSwitcher();
+                const langToggle = document.getElementById('langToggle');
+                if (langToggle && langToggle instanceof HTMLInputElement) {
+                    langToggle.addEventListener('change', () => {
+                        setLanguage(langToggle.checked ? 'es' : 'en');
+                    });
+                }
+
+                // FAQ accordion behavior: keep only one open.
+                document.querySelectorAll('details.faq-item').forEach(item => {
+                    item.addEventListener('toggle', () => {
+                        if (!item.open) return;
+                        document.querySelectorAll('details.faq-item').forEach(other => {
+                            if (other !== item) other.open = false;
+                        });
+                    });
+                });
             });
         });
     </script>
 </body>
+
 </html>
