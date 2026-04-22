@@ -47,22 +47,32 @@
             scroll-margin-top: 96px;
         }
 
-        /* Header */
+        /* Header fijo — siempre visible al hacer scroll */
         .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(245, 245, 245, 0.92);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            backdrop-filter: blur(6px);
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              width: 100%;
+              z-index: 50;
+              background: rgba(245, 245, 245, 0.97);
+              border-bottom: 1.5px solid rgba(0, 0, 0, 0.09);
+              backdrop-filter: blur(8px);
+              box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+        }
+
+        /* Compensa la altura del header fijo para que el contenido no quede tapado */
+        body {
+            padding-top: 88px;
         }
 
         .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 28px;
-            padding: 16px 0;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 28px;
+              padding: 22px 0 18px 0;
+              min-height: 80px;
         }
 
         .brand {
@@ -120,6 +130,22 @@
             align-items: center;
             gap: 14px;
             flex-shrink: 0;
+        }
+
+        /* Overlay for mobile nav */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.32);
+            z-index: 49;
+        }
+        .site-header.nav-open + .nav-overlay {
+            display: block;
+        }
+
+        .btn-menu {
+            display: none;
         }
 
         .lang-switch {
@@ -743,37 +769,46 @@
             margin-top: 10px;
         }
 
-        /* Responsive */
+        /* =============================================
+           RESPONSIVE — 980px (tablets y abajo)
+           ============================================= */
         @media (max-width: 980px) {
-            .container {
-                padding: 0 22px;
+            body {
+                padding-top: 92px;
             }
-
-            section[id] {
-                scroll-margin-top: 150px;
-            }
-
             .header-inner {
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 0;
+                min-height: 84px;
+                padding: 22px 0 18px 0;
             }
-
-            .site-nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 16px;
+            .site-header {
+                box-shadow: 0 4px 22px rgba(0,0,0,0.16);
+                border-bottom: 2px solid #e0e0e0;
+                margin-bottom: 12px;
             }
+            .brand-mark { width: 44px; height: 44px; }
+            .brand-name { font-size: 17px; }
+            .btn-menu { min-width: 52px; min-height: 52px; font-size: 20px; padding: 12px 22px; }
+            .lang-switch { min-height: 48px; font-size: 15px; }
+            .btn-login, .btn-signup { min-height: 48px; font-size: 16px; padding: 12px 18px; }
+            .header-actions { gap: 12px; }
 
-            .hero-inner {
-                padding: 86px 0;
-            }
-
-            .hero-title {
-                font-size: 40px;
-            }
-
+            /* ── Secciones split: pasan a una sola columna ── */
             .split,
-            .split--reverse,
+            .split.split--reverse {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            /* En split--reverse el texto sube antes de la imagen */
+            .split.split--reverse .copy {
+                order: -1;
+            }
+
+            .split + .split {
+                margin-top: 40px;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -797,107 +832,104 @@
             }
         }
 
+        /* =============================================
+           RESPONSIVE — 720px (móviles grandes)
+           ============================================= */
         @media (max-width: 720px) {
-            html,
-            body {
-                overflow-x: hidden;
-            }
+            html, body { overflow-x: hidden; }
 
             .header-inner {
                 justify-content: space-between;
-                gap: 14px;
+                gap: 0;
             }
 
-            .brand-name {
-                font-size: 16px;
+            .brand-name { font-size: 16px; }
+
+            .btn-menu {
+                display: inline-flex;
+                z-index: 51;
             }
 
             .site-nav {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100vw;
+                width: 80vw;
+                max-width: 340px;
+                height: 100vh;
+                background: #fff;
+                box-shadow: -2px 0 16px rgba(0,0,0,0.13);
+                padding: 90px 28px 28px 28px;
+                gap: 28px;
+                align-items: flex-start;
+                transition: right 0.25s cubic-bezier(.4,0,.2,1);
+                z-index: 50;
+            }
+            .site-header.nav-open .site-nav { right: 0; }
+            .site-header:not(.nav-open) .site-nav { pointer-events: none; }
+
+            .site-nav a {
+                font-size: 18px;
+                padding: 12px 0;
                 width: 100%;
-                order: 3;
-                gap: 12px;
-                padding-top: 8px;
+                border-radius: 8px;
+                text-align: left;
             }
+            .site-nav a:active { background: #f3f3f3; }
 
-            .header-actions {
-                order: 2;
-                gap: 10px;
-                flex-wrap: wrap;
-            }
+            .brand { gap: 8px; }
+            .brand-mark { width: 36px; height: 36px; }
+            .brand-name { font-size: 15px; }
 
-            .btn {
-                padding: 10px 14px;
-                font-size: 13px;
-            }
+            .header-actions { gap: 8px; }
+            .lang-switch { padding: 4px 8px; }
 
-            .hero {
-                min-height: 520px;
-            }
+            .btn { padding: 10px 12px; font-size: 14px; }
+            .btn-login, .btn-signup { min-width: 80px; }
 
-            .hero-inner {
-                padding: 70px 0;
+            .btn-menu {
+                position: relative;
+                background: #fff;
+                border: 1.5px solid #d0d0d0;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 700;
+                padding: 8px 18px;
+                margin-left: 6px;
             }
+            .btn-menu:active { background: #f3f3f3; }
 
-            .hero-tagline {
-                letter-spacing: 2px;
-                font-size: 12px;
-            }
+            .site-header { z-index: 52; }
+            .nav-overlay { display: none; }
+            .site-header.nav-open + .nav-overlay { display: block; }
 
-            .hero-title {
-                font-size: 34px;
-                margin-bottom: 22px;
-            }
+            .header-actions { order: 2; gap: 10px; flex-wrap: wrap; }
+            .btn { padding: 10px 14px; font-size: 13px; }
 
-            .btn-cta {
-                padding: 12px 26px;
-            }
+            .hero { min-height: 520px; }
+            .hero-inner { padding: 70px 0; }
+            .hero-tagline { letter-spacing: 2px; font-size: 12px; }
+            .hero-title { font-size: 34px; margin-bottom: 22px; }
+            .btn-cta { padding: 12px 26px; }
 
-            .section {
-                padding: 64px 0;
-            }
+            .section { padding: 64px 0; }
 
-            .section-heading {
-                gap: 14px;
-                margin-bottom: 40px;
-            }
+            .section-heading { gap: 14px; margin-bottom: 40px; }
+            .section-heading h2 { font-size: 28px; }
 
-            .section-heading h2 {
-                font-size: 28px;
-            }
+            .copy h2, .telemetry-copy h2 { font-size: 30px; }
+            .copy p, .telemetry-copy p { max-width: none; }
 
-            .copy h2,
-            .telemetry-copy h2 {
-                font-size: 30px;
-            }
+            .media { height: 220px; }
+            .media--tall { height: 260px; }
 
-            .copy p,
-            .telemetry-copy p {
-                max-width: none;
-            }
+            details.faq-item summary { padding: 16px 16px; }
+            .faq-answer { padding: 0 16px 16px 16px; }
 
-            .media {
-                height: 220px;
-            }
-
-            .media--tall {
-                height: 280px;
-            }
-
-            details.faq-item summary {
-                padding: 16px 16px;
-            }
-
-            .faq-answer {
-                padding: 0 16px 16px 16px;
-            }
-
-            .contact-card {
-                height: 320px;
-            }
-
-            .contact-form {
-                max-width: none;
-            }
+            .contact-card { height: 320px; }
+            .contact-form { max-width: none; }
 
             .contact-meta {
                 position: static;
@@ -907,56 +939,36 @@
                 border-radius: 18px;
                 background: rgba(245, 245, 245, 0.92);
             }
+            .meta-item a { font-size: 14px; }
 
-            .meta-item a {
-                font-size: 14px;
-            }
-
-            .footer-social {
-                flex-wrap: wrap;
-                gap: 14px;
-            }
+            .footer-social { flex-wrap: wrap; gap: 14px; }
         }
 
+        /* =============================================
+           RESPONSIVE — 480px (móviles pequeños)
+           ============================================= */
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
+            body {
+                padding-top: 80px;
             }
+            .container { padding: 0 16px; }
 
-            section[id] {
-                scroll-margin-top: 170px;
-            }
+            section[id] { scroll-margin-top: 170px; }
 
-            .hero {
-                min-height: 460px;
-            }
+            .hero { min-height: 460px; }
+            .hero-inner { padding: 60px 0; }
+            .hero-title { font-size: 28px; }
 
-            .hero-inner {
-                padding: 60px 0;
-            }
-
-            .hero-title {
-                font-size: 30px;
-            }
+            .copy h2, .telemetry-copy h2 { font-size: 26px; }
 
             .copy p,
             .telemetry-copy p,
-            .feature-list li {
-                font-size: 14px;
-            }
+            .feature-list li { font-size: 14px; }
 
-            .card {
-                padding: 22px;
-            }
+            .card { padding: 22px; }
 
-            .footer-brand {
-                font-size: 28px;
-            }
-
-            .footer-social a {
-                width: 48px;
-                height: 48px;
-            }
+            .footer-brand { font-size: 28px; }
+            .footer-social a { width: 48px; height: 48px; }
         }
     </style>
 </head>
@@ -971,7 +983,7 @@
                 <span class="brand-name">God's Tracker</span>
             </a>
 
-            <nav class="site-nav" aria-label="Primary">
+            <nav id="primaryNav" class="site-nav" aria-label="Primary">
                 <a href="#home" data-i18n="headers.home">Home</a>
                 <a href="#about" data-i18n="headers.about">About Us</a>
                 <a href="#how" data-i18n="headers.how">How does it work?</a>
@@ -980,6 +992,7 @@
             </nav>
 
             <div class="header-actions">
+                <button class="btn-menu" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">☰</button>
                 <div class="lang-switch" role="group" aria-label="Language">
                     <span class="lang-label" aria-hidden="true">EN</span>
                     <label class="switch">
@@ -992,6 +1005,7 @@
                 <a class="btn btn-signup" href="#" data-i18n="cta.signup">Sign Up</a>
             </div>
         </div>
+        <div class="nav-overlay"></div>
     </header>
 
     <main>
@@ -1136,8 +1150,6 @@
                             <div class="benefit-text" data-i18n="benefits.columns.1.cards.1.description">Access accurate, real-time insights on vehicle location, engine performance, and driver behavior.</div>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </section>
@@ -1307,64 +1319,36 @@
     <script src="./i18n/es.js"></script>
 
     <script>
-        // i18n Configuration
-        const i18nConfig = {
-            defaultLanguage: 'en',
-            supportedLanguages: ['en', 'es']
-        };
+        const i18nConfig = { defaultLanguage: 'en', supportedLanguages: ['en', 'es'] };
+        let translations = { en: {}, es: {} };
 
-        // Store for translations
-        let translations = {
-            en: {},
-            es: {}
-        };
-
-        // Get nested value from object using dot notation
         function getNestedValue(obj, path) {
             if (!obj || Object.keys(obj).length === 0) return null;
             return path.split('.').reduce((current, prop) => current?.[prop], obj);
         }
 
-        // Apply translations to the page
         function applyTranslations(language) {
-            if (Object.keys(translations[language]).length === 0) {
-                console.warn(`Las traducciones para ${language} están vacías. El fetch falló previamente.`);
-                return;
-            }
-
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
+            if (Object.keys(translations[language]).length === 0) return;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 const text = getNestedValue(translations[language], key);
-
-                if (text) {
-                    element.innerHTML = text;
-                } else {
-                    console.warn(`Llave de traducción faltante: ${key}`);
-                }
+                if (text) element.innerHTML = text;
             });
         }
 
-        // Set language and update UI
         function setLanguage(language) {
-            if (!i18nConfig.supportedLanguages.includes(language)) {
-                language = i18nConfig.defaultLanguage;
-            }
-
+            if (!i18nConfig.supportedLanguages.includes(language)) language = i18nConfig.defaultLanguage;
             localStorage.setItem('language', language);
             document.documentElement.lang = language;
             applyTranslations(language);
-
             const langToggle = document.getElementById('langToggle');
-            if (langToggle && langToggle instanceof HTMLInputElement) {
-                langToggle.checked = language === 'es';
-            }
+            if (langToggle instanceof HTMLInputElement) langToggle.checked = language === 'es';
         }
 
         function resolveInitialLanguage() {
-            const savedLanguage = localStorage.getItem('language');
-            const browserLanguage = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
-            return savedLanguage || browserLanguage || i18nConfig.defaultLanguage;
+            const saved = localStorage.getItem('language');
+            const browser = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+            return saved || browser || i18nConfig.defaultLanguage;
         }
 
         function applyInlineFallbackTranslations() {
@@ -1377,47 +1361,50 @@
             return false;
         }
 
-        // Load translations from JSON files
         async function loadTranslations() {
             const initialLanguage = resolveInitialLanguage();
-
             try {
-                const cacheBuster = new Date().getTime();
-
-                const [enResponse, esResponse] = await Promise.all([
-                    fetch(`./i18n/en.json?v=${cacheBuster}`),
-                    fetch(`./i18n/es.json?v=${cacheBuster}`)
+                const cb = new Date().getTime();
+                const [enRes, esRes] = await Promise.all([
+                    fetch(`./i18n/en.json?v=${cb}`),
+                    fetch(`./i18n/es.json?v=${cb}`)
                 ]);
-
-                if (!enResponse.ok || !esResponse.ok) {
-                    throw new Error('HTTP error - No se encontraron los archivos JSON');
-                }
-
-                translations.en = await enResponse.json();
-                translations.es = await esResponse.json();
-
+                if (!enRes.ok || !esRes.ok) throw new Error('HTTP error');
+                translations.en = await enRes.json();
+                translations.es = await esRes.json();
                 setLanguage(initialLanguage);
             } catch (error) {
-                if (applyInlineFallbackTranslations()) {
-                    setLanguage(initialLanguage);
-                    return;
-                }
-
-                console.error('Error crítico cargando traducciones:', error);
-                alert('Error cargando los idiomas.\n\nSi abriste el HTML directamente (file://), asegúrate de incluir i18n/en.js y i18n/es.js.\nSi estás usando un servidor (por ejemplo Live Server), verifica que /i18n/en.json y /i18n/es.json existan y sean accesibles.');
+                if (applyInlineFallbackTranslations()) { setLanguage(initialLanguage); return; }
+                console.error('Error cargando traducciones:', error);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             loadTranslations().then(() => {
-                const langToggle = document.getElementById('langToggle');
-                if (langToggle && langToggle instanceof HTMLInputElement) {
-                    langToggle.addEventListener('change', () => {
-                        setLanguage(langToggle.checked ? 'es' : 'en');
+                const siteHeader = document.querySelector('.site-header');
+
+                document.querySelector('.nav-overlay')?.addEventListener('click', () => {
+                    siteHeader.classList.remove('nav-open');
+                });
+
+                const menuToggle = document.getElementById('menuToggle');
+                if (siteHeader && menuToggle instanceof HTMLButtonElement) {
+                    const setMenuOpen = (open) => {
+                        siteHeader.classList.toggle('nav-open', open);
+                        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    };
+                    menuToggle.addEventListener('click', () => setMenuOpen(!siteHeader.classList.contains('nav-open')));
+                    document.querySelectorAll('#primaryNav a[href^="#"]').forEach(link => {
+                        link.addEventListener('click', () => setMenuOpen(false));
                     });
+                    window.addEventListener('resize', () => { if (window.innerWidth > 720) setMenuOpen(false); });
                 }
 
-                // FAQ accordion behavior: keep only one open.
+                const langToggle = document.getElementById('langToggle');
+                if (langToggle instanceof HTMLInputElement) {
+                    langToggle.addEventListener('change', () => setLanguage(langToggle.checked ? 'es' : 'en'));
+                }
+
                 document.querySelectorAll('details.faq-item').forEach(item => {
                     item.addEventListener('toggle', () => {
                         if (!item.open) return;
@@ -1430,5 +1417,4 @@
         });
     </script>
 </body>
-
 </html>

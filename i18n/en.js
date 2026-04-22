@@ -9,7 +9,8 @@ window.__i18n.en = {
     "about": "About Us",
     "how": "How does it work?",
     "faq": "FAQs",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu"
   },
   "cta": {
     "login": "Login",
@@ -98,20 +99,20 @@ window.__i18n.en = {
     "title": "Frequently asked questions",
     "items": [
       {
-        "question": "What is God's Tracker?",
-        "answer": "A revolutionary app made to transform vehicle security through an intelligent monitoring system and advanced telemetry, allowing our target segments to regain absolute control of their units in real time."
+        "question": "What is God's Tracker and what does it do?",
+        "answer": "God's Tracker is an intelligent vehicle security and telemetry platform that helps you monitor location, vehicle status, and receive alerts in real time."
       },
       {
-        "question": "What is God's Tracker?",
-        "answer": "God's Tracker provides real-time alerts, location visibility, and telemetry insights to keep you in control."
+        "question": "How do I know my vehicle is safe?",
+        "answer": "You receive instant security notifications and can verify your vehicle's location and key status indicators from the platform."
       },
       {
-        "question": "What is God's Tracker?",
-        "answer": "Designed for individuals, companies, and public-sector use cases that require reliable monitoring."
+        "question": "Is it for individuals or also for businesses?",
+        "answer": "It supports individuals, fleets, and organizations that need advanced monitoring, reporting, and operational insights."
       },
       {
-        "question": "What is God's Tracker?",
-        "answer": "If you need a tailored deployment, contact us and we can help you plan the right setup."
+        "question": "How can I request a demo or customized plan?",
+        "answer": "Contact us using the form below and tell us your use case. We'll help you choose the right setup for your vehicle or fleet."
       }
     ]
   },

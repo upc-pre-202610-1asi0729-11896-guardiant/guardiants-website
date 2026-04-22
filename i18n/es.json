@@ -6,7 +6,8 @@
         "about": "Quiénes somos",
         "how": "¿Cómo funciona?",
         "faq": "Preguntas frecuentes",
-        "contact": "Contacto"
+        "contact": "Contacto",
+        "menu": "Menú"
     },
     "cta": {
         "login": "Iniciar sesión",
@@ -95,20 +96,20 @@
         "title": "Preguntas frecuentes",
         "items": [
             {
-                "question": "¿Qué es God's Tracker?",
-                "answer": "Una aplicación revolucionaria creada para transformar la seguridad vehicular mediante un sistema de monitoreo inteligente y telemetría avanzada, permitiendo recuperar el control absoluto de sus unidades en tiempo real."
+                "question": "¿Qué es God's Tracker y qué hace?",
+                "answer": "God's Tracker es una plataforma inteligente de seguridad vehicular y telemetría que te permite monitorear la ubicación, el estado del vehículo y recibir alertas en tiempo real."
             },
             {
-                "question": "¿Qué es God's Tracker?",
-                "answer": "God's Tracker ofrece alertas en tiempo real, visibilidad de ubicación e información de telemetría para que estés en control."
+                "question": "¿Cómo sé si mi vehículo está seguro?",
+                "answer": "Recibes notificaciones de seguridad al instante y puedes verificar la ubicación y los indicadores clave del vehículo desde la plataforma."
             },
             {
-                "question": "¿Qué es God's Tracker?",
-                "answer": "Diseñado para personas, empresas y casos de uso del sector público que requieren monitoreo confiable."
+                "question": "¿Sirve para uso personal y también para empresas?",
+                "answer": "Soporta a personas, flotas y organizaciones que requieren monitoreo avanzado, reportes y análisis operativo."
             },
             {
-                "question": "¿Qué es God's Tracker?",
-                "answer": "Si necesitas un despliegue a medida, contáctanos y te ayudamos a planificar la configuración adecuada."
+                "question": "¿Cómo solicito una demo o un plan a medida?",
+                "answer": "Contáctanos usando el formulario de abajo y cuéntanos tu caso. Te ayudamos a elegir la configuración adecuada para tu vehículo o flota."
             }
         ]
     },
