@@ -49,16 +49,16 @@
 
         /* Header fijo — siempre visible al hacer scroll */
         .site-header {
-              position: fixed;
-              top: 0;
-              left: 0;
-              right: 0;
-              width: 100%;
-              z-index: 50;
-              background: rgba(245, 245, 245, 0.97);
-              border-bottom: 1.5px solid rgba(0, 0, 0, 0.09);
-              backdrop-filter: blur(8px);
-              box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(245, 245, 245, 0.97);
+            border-bottom: 1.5px solid rgba(0, 0, 0, 0.09);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10);
         }
 
         /* Compensa la altura del header fijo para que el contenido no quede tapado */
@@ -67,12 +67,12 @@
         }
 
         .header-inner {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 28px;
-              padding: 22px 0 18px 0;
-              min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 22px 0 18px 0;
+            min-height: 80px;
         }
 
         .brand {
@@ -512,6 +512,303 @@
             color: rgba(0, 0, 0, 0.7);
         }
 
+        /* =============================================
+           PRICING SECTION
+           ============================================= */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--panel);
+            border: 1.5px solid var(--border);
+            border-radius: 24px;
+            padding: 36px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card--featured {
+            background: var(--text);
+            color: #f5f5f5;
+            border-color: var(--text);
+        }
+
+        .pricing-badge {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            line-height: 1;
+        }
+
+        .pricing-currency {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .pricing-amount {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .pricing-period {
+            font-size: 15px;
+            opacity: 0.55;
+            margin-bottom: 8px;
+        }
+
+        .pricing-desc {
+            font-size: 13px;
+            line-height: 1.55;
+            opacity: 0.65;
+            margin: 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .pricing-features li {
+            font-size: 13px;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+            font-size: 12px;
+        }
+
+        .btn-pricing {
+            background: var(--bg);
+            border: 1.5px solid var(--border);
+            color: var(--text);
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s ease, transform 0.15s ease;
+            margin-top: auto;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-pricing:hover {
+            background: #e2e2e2;
+        }
+
+        .btn-pricing:active {
+            transform: translateY(1px);
+        }
+
+        .btn-pricing--dark {
+            background: #f5f5f5;
+            border-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        .btn-pricing--dark:hover {
+            background: #e0e0e0;
+        }
+
+        /* =============================================
+           LOGIN MODAL
+           ============================================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+            animation: modalFadeIn 0.18s ease;
+        }
+
+        .modal-overlay[hidden] {
+            display: none;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .modal-box {
+            background: var(--panel);
+            border: 1.5px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 36px 36px;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+            animation: modalSlideUp 0.2s ease;
+        }
+
+        @keyframes modalSlideUp {
+            from { transform: translateY(16px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--muted);
+            line-height: 1;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+
+        .modal-close:hover {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 22px;
+        }
+
+        .modal-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .modal-tab {
+            flex: 1;
+            padding: 9px 14px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--muted);
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .modal-tab--active {
+            background: var(--panel);
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+        }
+
+        .modal-field {
+            margin-bottom: 14px;
+        }
+
+        .modal-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .modal-field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #d0d0d0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .modal-field input:focus {
+            border-color: var(--border);
+        }
+
+        .modal-field input.input-error {
+            border-color: #c0392b;
+        }
+
+        .modal-error {
+            background: #fde8e8;
+            border: 1px solid #f5c6c6;
+            border-radius: 10px;
+            color: #c0392b;
+            font-size: 13px;
+            padding: 10px 14px;
+            margin-bottom: 14px;
+        }
+
+        .modal-error[hidden] {
+            display: none;
+        }
+
+        .btn-login-submit {
+            width: 100%;
+            margin-top: 8px;
+            padding: 13px 20px;
+            background: var(--text);
+            color: #f5f5f5;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            font-family: inherit;
+        }
+
+        .btn-login-submit:hover {
+            opacity: 0.88;
+        }
+
+        .btn-login-submit:active {
+            transform: translateY(1px);
+        }
+
         /* FAQ */
         .faq-list {
             max-width: 980px;
@@ -925,6 +1222,13 @@
             .media { height: 220px; }
             .media--tall { height: 260px; }
 
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-box {
+                padding: 32px 22px 28px;
+            }
+
             details.faq-item summary { padding: 16px 16px; }
             .faq-answer { padding: 0 16px 16px 16px; }
 
@@ -974,447 +1278,639 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="#home" aria-label="God's Tracker">
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="God's Tracker">
                 <span class="brand-mark">
                     <img src="logo guardiants - short.png" alt="">
                 </span>
-                <span class="brand-name">God's Tracker</span>
-            </a>
+            <span class="brand-name">God's Tracker</span>
+        </a>
 
-            <nav id="primaryNav" class="site-nav" aria-label="Primary">
-                <a href="#home" data-i18n="headers.home">Home</a>
-                <a href="#about" data-i18n="headers.about">About Us</a>
-                <a href="#how" data-i18n="headers.how">How does it work?</a>
-                <a href="#faq" data-i18n="headers.faq">FAQs</a>
-                <a href="#contact" data-i18n="headers.contact">Contact</a>
-            </nav>
+        <nav id="primaryNav" class="site-nav" aria-label="Primary">
+            <a href="#home" data-i18n="headers.home">Home</a>
+            <a href="#about" data-i18n="headers.about">About Us</a>
+            <a href="#how" data-i18n="headers.how">How does it work?</a>
+            <a href="#faq" data-i18n="headers.faq">FAQs</a>
+            <a href="#contact" data-i18n="headers.contact">Contact</a>
+        </nav>
 
-            <div class="header-actions">
-                <button class="btn-menu" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">☰</button>
-                <div class="lang-switch" role="group" aria-label="Language">
-                    <span class="lang-label" aria-hidden="true">EN</span>
-                    <label class="switch">
-                        <input id="langToggle" type="checkbox" aria-label="Toggle language">
-                        <span class="slider"></span>
-                    </label>
-                    <span class="lang-label" aria-hidden="true">ES</span>
+        <div class="header-actions">
+            <button class="btn-menu" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">☰</button>
+            <div class="lang-switch" role="group" aria-label="Language">
+                <span class="lang-label" aria-hidden="true">EN</span>
+                <label class="switch">
+                    <input id="langToggle" type="checkbox" aria-label="Toggle language">
+                    <span class="slider"></span>
+                </label>
+                <span class="lang-label" aria-hidden="true">ES</span>
+            </div>
+            <button class="btn btn-login" id="loginBtn" data-i18n="cta.login">Login</button>
+            <a class="btn btn-signup" href="#" data-i18n="cta.signup">Sign Up</a>
+        </div>
+    </div>
+    <div class="nav-overlay"></div>
+</header>
+
+<main>
+    <section class="hero" id="home">
+        <div class="container hero-inner">
+            <p class="hero-tagline" data-i18n="heroSection.tagline">PREVENT | PROTECT | OPTIMIZE</p>
+            <h1 class="hero-title" data-i18n="heroSection.slogan">The new era of intelligent vehicle security with God's Tracker</h1>
+            <a class="btn btn-cta" href="#contact" data-i18n="heroSection.cta">Get Started</a>
+        </div>
+    </section>
+
+    <section class="section section--white" id="about">
+        <div class="container">
+            <div class="split">
+                <div class="media">
+                    <img src="assets/mission.png" alt="Mission" loading="lazy" onerror="this.style.display='none'">
                 </div>
-                <a class="btn btn-login" href="#" data-i18n="cta.login">Login</a>
-                <a class="btn btn-signup" href="#" data-i18n="cta.signup">Sign Up</a>
+                <div class="copy">
+                    <h2 data-i18n="mission.title">Mission</h2>
+                    <p data-i18n="mission.content">Our mission is to transform vehicle security through an intelligent monitoring system and advanced telemetry, allowing our target segments to regain absolute control of their units in real time.</p>
+                </div>
+            </div>
+
+            <div class="split split--reverse">
+                <div class="copy">
+                    <h2 data-i18n="vision.title">Vision</h2>
+                    <p data-i18n="vision.content">GuardiAnts is positioning itself as a disruptive leader in the vehicle security and asset management industry by merging advanced telemetry with IoT (Internet of Things).</p>
+                </div>
+                <div class="media">
+                    <img src="assets/vision.png" alt="Vision" loading="lazy" onerror="this.style.display='none'">
+                </div>
             </div>
         </div>
-        <div class="nav-overlay"></div>
-    </header>
+    </section>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="container hero-inner">
-                <p class="hero-tagline" data-i18n="heroSection.tagline">PREVENT | PROTECT | OPTIMIZE</p>
-                <h1 class="hero-title" data-i18n="heroSection.slogan">The new era of intelligent vehicle security with God's Tracker</h1>
-                <a class="btn btn-cta" href="#contact" data-i18n="heroSection.cta">Get Started</a>
+    <section class="section" id="how">
+        <div class="container">
+            <div class="section-heading">
+                <h2 data-i18n="howdoesitworkSection.title">How does it work?</h2>
             </div>
-        </section>
 
-        <section class="section section--white" id="about">
-            <div class="container">
-                <div class="split">
-                    <div class="media">
-                        <img src="assets/mission.png" alt="Mission" loading="lazy" onerror="this.style.display='none'">
+            <div class="how-grid">
+                <article class="card">
+                    <div class="card-image">
+                        <img src="assets/how-natural-person.png" alt="Natural Person" loading="lazy" onerror="this.style.display='none'">
                     </div>
-                    <div class="copy">
-                        <h2 data-i18n="mission.title">Mission</h2>
-                        <p data-i18n="mission.content">Our mission is to transform vehicle security through an intelligent monitoring system and advanced telemetry, allowing our target segments to regain absolute control of their units in real time.</p>
-                    </div>
-                </div>
+                    <h3 data-i18n="howdoesitworkSection.segment1.title">Natural Person</h3>
+                    <p data-i18n="howdoesitworkSection.segment1.description">Individuals who want to protect their vehicle, receive basic alerts, and know the vehicle's location in real time.</p>
+                </article>
 
-                <div class="split split--reverse">
-                    <div class="copy">
-                        <h2 data-i18n="vision.title">Vision</h2>
-                        <p data-i18n="vision.content">GuardiAnts is positioning itself as a disruptive leader in the vehicle security and asset management industry by merging advanced telemetry with IoT (Internet of Things).</p>
+                <article class="card">
+                    <div class="card-image">
+                        <img src="assets/how-companies.png" alt="Companies" loading="lazy" onerror="this.style.display='none'">
                     </div>
-                    <div class="media">
-                        <img src="assets/vision.png" alt="Vision" loading="lazy" onerror="this.style.display='none'">
-                    </div>
-                </div>
+                    <h3 data-i18n="howdoesitworkSection.segment2.title">Companies</h3>
+                    <p data-i18n="howdoesitworkSection.segment2.description">Companies from all sectors, especially those in heavy freight transport, logistics companies, as well as public transport, for more advanced analysis.</p>
+                </article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section" id="how">
-            <div class="container">
-                <div class="section-heading">
-                    <h2 data-i18n="howdoesitworkSection.title">How does it work?</h2>
+    <section class="section section--white" id="telemetry">
+        <div class="container">
+            <div class="split">
+                <div class="telemetry-copy">
+                    <h2 data-i18n="telemetrySection.title">Where telemetry and security meets</h2>
+                    <p data-i18n="telemetrySection.content">We transform raw vehicle data into actionable intelligence. Our platform doesn't just track location: it monitors engine health, driving patterns, and operational efficiency.</p>
+                    <ul class="feature-list">
+                        <li data-i18n="telemetrySection.bullet1">Predictive Maintenance Monitoring</li>
+                        <li data-i18n="telemetrySection.bullet2">Driving Behavior Analytics</li>
+                        <li data-i18n="telemetrySection.bullet3">Instant Security Alerts</li>
+                    </ul>
                 </div>
-
-                <div class="how-grid">
-                    <article class="card">
-                        <div class="card-image">
-                            <img src="assets/how-natural-person.png" alt="Natural Person" loading="lazy" onerror="this.style.display='none'">
-                        </div>
-                        <h3 data-i18n="howdoesitworkSection.segment1.title">Natural Person</h3>
-                        <p data-i18n="howdoesitworkSection.segment1.description">Individuals who want to protect their vehicle, receive basic alerts, and know the vehicle's location in real time.</p>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-image">
-                            <img src="assets/how-companies.png" alt="Companies" loading="lazy" onerror="this.style.display='none'">
-                        </div>
-                        <h3 data-i18n="howdoesitworkSection.segment2.title">Companies</h3>
-                        <p data-i18n="howdoesitworkSection.segment2.description">Companies from all sectors, especially those in heavy freight transport, logistics companies, as well as public transport, for more advanced analysis.</p>
-                    </article>
+                <div class="media media--tall">
+                    <img src="assets/telemetry-dashboard.png" alt="Telemetry dashboard" loading="lazy" onerror="this.style.display='none'">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section section--white" id="telemetry">
-            <div class="container">
-                <div class="split">
-                    <div class="telemetry-copy">
-                        <h2 data-i18n="telemetrySection.title">Where telemetry and security meets</h2>
-                        <p data-i18n="telemetrySection.content">We transform raw vehicle data into actionable intelligence. Our platform doesn't just track location: it monitors engine health, driving patterns, and operational efficiency.</p>
-                        <ul class="feature-list">
-                            <li data-i18n="telemetrySection.bullet1">Predictive Maintenance Monitoring</li>
-                            <li data-i18n="telemetrySection.bullet2">Driving Behavior Analytics</li>
-                            <li data-i18n="telemetrySection.bullet3">Instant Security Alerts</li>
-                        </ul>
-                    </div>
-                    <div class="media media--tall">
-                        <img src="assets/telemetry-dashboard.png" alt="Telemetry dashboard" loading="lazy" onerror="this.style.display='none'">
-                    </div>
-                </div>
+    <section class="section" id="benefits">
+        <div class="container">
+            <div class="section-heading">
+                <h2 data-i18n="benefits.title">Benefits</h2>
             </div>
-        </section>
 
-        <section class="section" id="benefits">
-            <div class="container">
-                <div class="section-heading">
-                    <h2 data-i18n="benefits.title">Benefits</h2>
-                </div>
+            <div class="benefits-columns">
+                <div class="benefits-column">
+                    <h3 data-i18n="benefits.columns.0.title">Individual Vehicle Owners</h3>
 
-                <div class="benefits-columns">
-                    <div class="benefits-column">
-                        <h3 data-i18n="benefits.columns.0.title">Individual Vehicle Owners</h3>
-
-                        <div class="benefit-tile">
-                            <div class="benefit-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="8"></circle>
-                                    <path d="M9.5 10.2c.4-1 1.4-1.7 2.6-1.7 1.6 0 2.9 1.1 2.9 2.5 0 2-3.2 2-3.2 3.9"></path>
-                                    <path d="M12 17.8h.01"></path>
-                                </svg>
-                            </div>
-                            <div class="benefit-title" data-i18n="benefits.columns.0.cards.0.title">Maximized Asset ROI</div>
-                            <div class="benefit-text" data-i18n="benefits.columns.0.cards.0.description">Eliminate operational waste and extend vehicle lifespan through data-driven decisions.</div>
+                    <div class="benefit-tile">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="8"></circle>
+                                <path d="M9.5 10.2c.4-1 1.4-1.7 2.6-1.7 1.6 0 2.9 1.1 2.9 2.5 0 2-3.2 2-3.2 3.9"></path>
+                                <path d="M12 17.8h.01"></path>
+                            </svg>
                         </div>
-
-                        <div class="benefit-tile">
-                            <div class="benefit-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 3l7 4v6c0 5-3.5 8-7 8s-7-3-7-8V7l7-4z"></path>
-                                    <path d="M9.5 12l1.8 1.8L15 10"></path>
-                                </svg>
-                            </div>
-                            <div class="benefit-title" data-i18n="benefits.columns.0.cards.1.title">Preventive Asset Care</div>
-                            <div class="benefit-text" data-i18n="benefits.columns.0.cards.1.description">Identify potential mechanical issues before they become costly repairs.</div>
-                        </div>
+                        <div class="benefit-title" data-i18n="benefits.columns.0.cards.0.title">Maximized Asset ROI</div>
+                        <div class="benefit-text" data-i18n="benefits.columns.0.cards.0.description">Eliminate operational waste and extend vehicle lifespan through data-driven decisions.</div>
                     </div>
 
-                    <div class="benefits-column">
-                        <h3 data-i18n="benefits.columns.1.title">Companies</h3>
-
-                        <div class="benefit-tile">
-                            <div class="benefit-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 3l7 4v6c0 5-3.5 8-7 8s-7-3-7-8V7l7-4z"></path>
-                                    <path d="M9 13h6"></path>
-                                    <path d="M12 10v6"></path>
-                                </svg>
-                            </div>
-                            <div class="benefit-title" data-i18n="benefits.columns.1.cards.0.title">Immediate Response Protocols</div>
-                            <div class="benefit-text" data-i18n="benefits.columns.1.cards.0.description">Defend your assets with automated alerts and active protocols that trigger the moment a threat is detected.</div>
+                    <div class="benefit-tile">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l7 4v6c0 5-3.5 8-7 8s-7-3-7-8V7l7-4z"></path>
+                                <path d="M9.5 12l1.8 1.8L15 10"></path>
+                            </svg>
                         </div>
+                        <div class="benefit-title" data-i18n="benefits.columns.0.cards.1.title">Preventive Asset Care</div>
+                        <div class="benefit-text" data-i18n="benefits.columns.0.cards.1.description">Identify potential mechanical issues before they become costly repairs.</div>
+                    </div>
+                </div>
 
-                        <div class="benefit-tile">
-                            <div class="benefit-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 6h16"></path>
-                                    <path d="M4 10h16"></path>
-                                    <path d="M4 14h10"></path>
-                                    <path d="M4 18h10"></path>
-                                    <path d="M16 14l4 4"></path>
-                                    <path d="M20 14l-4 4"></path>
-                                </svg>
-                            </div>
-                            <div class="benefit-title" data-i18n="benefits.columns.1.cards.1.title">Precision Telemetry Data</div>
-                            <div class="benefit-text" data-i18n="benefits.columns.1.cards.1.description">Access accurate, real-time insights on vehicle location, engine performance, and driver behavior.</div>
+                <div class="benefits-column">
+                    <h3 data-i18n="benefits.columns.1.title">Companies</h3>
+
+                    <div class="benefit-tile">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l7 4v6c0 5-3.5 8-7 8s-7-3-7-8V7l7-4z"></path>
+                                <path d="M9 13h6"></path>
+                                <path d="M12 10v6"></path>
+                            </svg>
                         </div>
+                        <div class="benefit-title" data-i18n="benefits.columns.1.cards.0.title">Immediate Response Protocols</div>
+                        <div class="benefit-text" data-i18n="benefits.columns.1.cards.0.description">Defend your assets with automated alerts and active protocols that trigger the moment a threat is detected.</div>
+                    </div>
+
+                    <div class="benefit-tile">
+                        <div class="benefit-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 6h16"></path>
+                                <path d="M4 10h16"></path>
+                                <path d="M4 14h10"></path>
+                                <path d="M4 18h10"></path>
+                                <path d="M16 14l4 4"></path>
+                                <path d="M20 14l-4 4"></path>
+                            </svg>
+                        </div>
+                        <div class="benefit-title" data-i18n="benefits.columns.1.cards.1.title">Precision Telemetry Data</div>
+                        <div class="benefit-text" data-i18n="benefits.columns.1.cards.1.description">Access accurate, real-time insights on vehicle location, engine performance, and driver behavior.</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section section--white" id="faq">
-            <div class="container">
-                <div class="section-heading">
-                    <h2 data-i18n="faq.title">Frequently asked questions</h2>
+    <section class="section section--white" id="pricing">
+        <div class="container">
+            <div class="section-heading">
+                <h2 data-i18n="pricing.title">Plans</h2>
+            </div>
+            <div class="pricing-grid">
+
+                <div class="pricing-card">
+                    <div class="pricing-badge" data-i18n="pricing.basic.badge">Basic</div>
+                    <div class="pricing-price">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-amount" data-i18n="pricing.basic.price">9</span>
+                        <span class="pricing-period" data-i18n="pricing.basic.period">/mo</span>
+                    </div>
+                    <p class="pricing-desc" data-i18n="pricing.basic.desc">
+                        Ideal for individual vehicle owners who want real-time protection.
+                    </p>
+                    <ul class="pricing-features">
+                        <li data-i18n="pricing.basic.f1">Real-time GPS tracking</li>
+                        <li data-i18n="pricing.basic.f2">Instant security alerts</li>
+                        <li data-i18n="pricing.basic.f3">1 vehicle</li>
+                        <li data-i18n="pricing.basic.f4">Mobile app access</li>
+                    </ul>
+                    <button class="btn btn-pricing" data-i18n="pricing.cta" data-plan="basic">Get Started</button>
                 </div>
 
-                <div class="faq-list">
-                    <details class="faq-item" open>
-                        <summary>
-                            <span class="faq-number">1</span>
-                            <span class="faq-question" data-i18n="faq.items.0.question">What is God's Tracker?</span>
-                            <span class="faq-chevron" aria-hidden="true">
+                <div class="pricing-card pricing-card--featured">
+                    <div class="pricing-badge" data-i18n="pricing.pro.badge">Pro</div>
+                    <div class="pricing-price">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-amount" data-i18n="pricing.pro.price">29</span>
+                        <span class="pricing-period" data-i18n="pricing.pro.period">/mo</span>
+                    </div>
+                    <p class="pricing-desc" data-i18n="pricing.pro.desc">
+                        For companies and fleets that demand advanced telemetry and reporting.
+                    </p>
+                    <ul class="pricing-features">
+                        <li data-i18n="pricing.pro.f1">Everything in Basic</li>
+                        <li data-i18n="pricing.pro.f2">Fleet management (up to 20)</li>
+                        <li data-i18n="pricing.pro.f3">Driver behavior analytics</li>
+                        <li data-i18n="pricing.pro.f4">Predictive maintenance alerts</li>
+                        <li data-i18n="pricing.pro.f5">Priority support</li>
+                    </ul>
+                    <button class="btn btn-pricing btn-pricing--dark" data-i18n="pricing.cta" data-plan="pro">Get Started</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--white" id="faq">
+        <div class="container">
+            <div class="section-heading">
+                <h2 data-i18n="faq.title">Frequently asked questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary>
+                        <span class="faq-number">1</span>
+                        <span class="faq-question" data-i18n="faq.items.0.question">What is God's Tracker?</span>
+                        <span class="faq-chevron" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 9l6 6 6-6"></path>
                                 </svg>
                             </span>
-                        </summary>
-                        <div class="faq-answer" data-i18n="faq.items.0.answer">A revolutionary app made to transform vehicle security through an intelligent monitoring system and advanced telemetry.</div>
-                    </details>
+                    </summary>
+                    <div class="faq-answer" data-i18n="faq.items.0.answer">A revolutionary app made to transform vehicle security through an intelligent monitoring system and advanced telemetry.</div>
+                </details>
 
-                    <details class="faq-item">
-                        <summary>
-                            <span class="faq-number">2</span>
-                            <span class="faq-question" data-i18n="faq.items.1.question">What is God's Tracker?</span>
-                            <span class="faq-chevron" aria-hidden="true">
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-number">2</span>
+                        <span class="faq-question" data-i18n="faq.items.1.question">What is God's Tracker?</span>
+                        <span class="faq-chevron" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 9l6 6 6-6"></path>
                                 </svg>
                             </span>
-                        </summary>
-                        <div class="faq-answer" data-i18n="faq.items.1.answer">God's Tracker provides real-time alerts, location visibility, and telemetry insights to keep you in control.</div>
-                    </details>
+                    </summary>
+                    <div class="faq-answer" data-i18n="faq.items.1.answer">God's Tracker provides real-time alerts, location visibility, and telemetry insights to keep you in control.</div>
+                </details>
 
-                    <details class="faq-item">
-                        <summary>
-                            <span class="faq-number">3</span>
-                            <span class="faq-question" data-i18n="faq.items.2.question">What is God's Tracker?</span>
-                            <span class="faq-chevron" aria-hidden="true">
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-number">3</span>
+                        <span class="faq-question" data-i18n="faq.items.2.question">What is God's Tracker?</span>
+                        <span class="faq-chevron" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 9l6 6 6-6"></path>
                                 </svg>
                             </span>
-                        </summary>
-                        <div class="faq-answer" data-i18n="faq.items.2.answer">Designed for individuals, companies, and public-sector use cases that require reliable monitoring.</div>
-                    </details>
+                    </summary>
+                    <div class="faq-answer" data-i18n="faq.items.2.answer">Designed for individuals, companies, and public-sector use cases that require reliable monitoring.</div>
+                </details>
 
-                    <details class="faq-item">
-                        <summary>
-                            <span class="faq-number">4</span>
-                            <span class="faq-question" data-i18n="faq.items.3.question">What is God's Tracker?</span>
-                            <span class="faq-chevron" aria-hidden="true">
+                <details class="faq-item">
+                    <summary>
+                        <span class="faq-number">4</span>
+                        <span class="faq-question" data-i18n="faq.items.3.question">What is God's Tracker?</span>
+                        <span class="faq-chevron" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 9l6 6 6-6"></path>
                                 </svg>
                             </span>
-                        </summary>
-                        <div class="faq-answer" data-i18n="faq.items.3.answer">If you need a tailored deployment, contact us and we can help you plan the right setup.</div>
-                    </details>
-                </div>
+                    </summary>
+                    <div class="faq-answer" data-i18n="faq.items.3.answer">If you need a tailored deployment, contact us and we can help you plan the right setup.</div>
+                </details>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section" id="contact">
-            <div class="container">
-                <div class="contact-grid">
-                    <form class="contact-form" action="#" method="post">
-                        <div class="field">
-                            <label for="fullName" data-i18n="contact.form.nameLabel">Name - Last Name</label>
-                            <input id="fullName" name="fullName" type="text" autocomplete="name">
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <form class="contact-form" action="#" method="post">
+                    <div class="field">
+                        <label for="fullName" data-i18n="contact.form.nameLabel">Name - Last Name</label>
+                        <input id="fullName" name="fullName" type="text" autocomplete="name">
+                    </div>
+
+                    <div class="field">
+                        <label for="phone" data-i18n="contact.form.phoneLabel">Phone</label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel">
+                    </div>
+
+                    <div class="field">
+                        <label for="email" data-i18n="contact.form.emailLabel">Email</label>
+                        <input id="email" name="email" type="email" autocomplete="email">
+                    </div>
+
+                    <div class="field">
+                        <span class="field-label" data-i18n="contact.form.userTypeLabel">User type</span>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="userType" value="natural">
+                                <span data-i18n="contact.form.userTypeNatural">Natural Person</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="userType" value="companies">
+                                <span data-i18n="contact.form.userTypeCompanies">Companies</span>
+                            </label>
                         </div>
+                    </div>
 
-                        <div class="field">
-                            <label for="phone" data-i18n="contact.form.phoneLabel">Phone</label>
-                            <input id="phone" name="phone" type="tel" autocomplete="tel">
-                        </div>
+                    <div class="field">
+                        <label for="message" data-i18n="contact.form.messageLabel">Message</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
 
-                        <div class="field">
-                            <label for="email" data-i18n="contact.form.emailLabel">Email</label>
-                            <input id="email" name="email" type="email" autocomplete="email">
-                        </div>
+                    <button class="btn btn-send" type="submit" data-i18n="contact.form.submit">Send Message</button>
+                </form>
 
-                        <div class="field">
-                            <span class="field-label" data-i18n="contact.form.userTypeLabel">User type</span>
-                            <div class="radio-group">
-                                <label>
-                                    <input type="radio" name="userType" value="natural">
-                                    <span data-i18n="contact.form.userTypeNatural">Natural Person</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="userType" value="companies">
-                                    <span data-i18n="contact.form.userTypeCompanies">Companies</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label for="message" data-i18n="contact.form.messageLabel">Message</label>
-                            <textarea id="message" name="message"></textarea>
-                        </div>
-
-                        <button class="btn btn-send" type="submit" data-i18n="contact.form.submit">Send Message</button>
-                    </form>
-
-                    <div class="contact-card">
-                        <img src="assets/contact.png" alt="Contact" loading="lazy" onerror="this.style.display='none'">
-                        <div class="contact-meta">
-                            <div class="meta-item">
+                <div class="contact-card">
+                    <img src="assets/contact.png" alt="Contact" loading="lazy" onerror="this.style.display='none'">
+                    <div class="contact-meta">
+                        <div class="meta-item">
                                 <span class="meta-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.7 19.7 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.3a2 2 0 0 1-.5 2.1L9 10a16 16 0 0 0 5 5l.9-1.1a2 2 0 0 1 2.1-.5c.7.3 1.5.5 2.3.6A2 2 0 0 1 22 16.9z"></path>
                                     </svg>
                                 </span>
-                                <a href="tel:+51977543006" data-i18n="contact.info.phone">+51 977543006</a>
-                            </div>
+                            <a href="tel:+51977543006" data-i18n="contact.info.phone">+51 977543006</a>
+                        </div>
 
-                            <div class="meta-item">
+                        <div class="meta-item">
                                 <span class="meta-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M4 4h16v16H4z"></path>
                                         <path d="M22 6 12 13 2 6"></path>
                                     </svg>
                                 </span>
-                                <a href="mailto:contact@godstracker.com" data-i18n="contact.info.email">contact@godstracker.com</a>
-                            </div>
+                            <a href="mailto:contact@godstracker.com" data-i18n="contact.info.email">contact@godstracker.com</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-brand" data-i18n="footer.brand">GOD'S TRACKER</div>
-            <div class="footer-location" data-i18n="footer.location1">Santiago de Surco</div>
-            <div class="footer-location" data-i18n="footer.location2">Lima - Perú</div>
-
-            <div class="footer-social" aria-label="Social links">
-                <a href="#" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z" />
-                    </svg>
-                </a>
-                <a href="#" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <rect x="3" y="3" width="18" height="18" rx="4" />
-                        <circle cx="12" cy="12" r="4" />
-                        <path d="M17.5 6.5h.01" />
-                    </svg>
-                </a>
-                <a href="#" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M6.5 6.5A1.5 1.5 0 1 1 5 5a1.5 1.5 0 0 1 1.5 1.5zM5.2 9H7.8v10H5.2V9zM10 9h2.5v1.4h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V19h-2.6v-5c0-1.2 0-2.7-1.7-2.7-1.7 0-2 1.3-2 2.6V19H10V9z" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="footer-rights" data-i18n="rights.content">God's Tracker © 2025</div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <script src="./i18n/en.js"></script>
-    <script src="./i18n/es.js"></script>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand" data-i18n="footer.brand">GOD'S TRACKER</div>
+        <div class="footer-location" data-i18n="footer.location1">Santiago de Surco</div>
+        <div class="footer-location" data-i18n="footer.location2">Lima - Perú</div>
 
-    <script>
-        const i18nConfig = { defaultLanguage: 'en', supportedLanguages: ['en', 'es'] };
-        let translations = { en: {}, es: {} };
+        <div class="footer-social" aria-label="Social links">
+            <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="4" />
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M17.5 6.5h.01" />
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M6.5 6.5A1.5 1.5 0 1 1 5 5a1.5 1.5 0 0 1 1.5 1.5zM5.2 9H7.8v10H5.2V9zM10 9h2.5v1.4h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7V19h-2.6v-5c0-1.2 0-2.7-1.7-2.7-1.7 0-2 1.3-2 2.6V19H10V9z" />
+                </svg>
+            </a>
+        </div>
 
-        function getNestedValue(obj, path) {
-            if (!obj || Object.keys(obj).length === 0) return null;
-            return path.split('.').reduce((current, prop) => current?.[prop], obj);
+        <div class="footer-rights" data-i18n="rights.content">God's Tracker © 2025</div>
+    </div>
+</footer>
+
+<div id="loginModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-box">
+        <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+
+        <h2 class="modal-title" id="modalTitle" data-i18n="login.title">Sign In</h2>
+
+        <div class="modal-tabs">
+            <button class="modal-tab modal-tab--active" data-tab="natural" data-i18n="login.tabNatural">
+                Natural Person
+            </button>
+            <button class="modal-tab" data-tab="company" data-i18n="login.tabCompany">
+                Company
+            </button>
+        </div>
+
+        <div id="loginError" class="modal-error" hidden></div>
+
+        <div class="modal-field">
+            <label for="loginEmail" data-i18n="login.emailLabel">Email</label>
+            <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="modal-field">
+            <label for="loginPassword" data-i18n="login.passwordLabel">Password</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••">
+        </div>
+
+        <button class="btn btn-login-submit" id="loginSubmit" data-i18n="login.submit">Sign In</button>
+    </div>
+</div>
+
+<script src="./i18n/en.js"></script>
+<script src="./i18n/es.js"></script>
+
+<script>
+    const i18nConfig = { defaultLanguage: 'en', supportedLanguages: ['en', 'es'] };
+    let translations = { en: {}, es: {} };
+
+    function getNestedValue(obj, path) {
+        if (!obj || Object.keys(obj).length === 0) return null;
+        return path.split('.').reduce((current, prop) => current?.[prop], obj);
+    }
+
+    function applyTranslations(language) {
+        if (Object.keys(translations[language]).length === 0) return;
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const text = getNestedValue(translations[language], key);
+            if (text) element.innerHTML = text;
+        });
+    }
+
+    function setLanguage(language) {
+        if (!i18nConfig.supportedLanguages.includes(language)) language = i18nConfig.defaultLanguage;
+        localStorage.setItem('language', language);
+        document.documentElement.lang = language;
+        applyTranslations(language);
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle instanceof HTMLInputElement) langToggle.checked = language === 'es';
+    }
+
+    function resolveInitialLanguage() {
+        const saved = localStorage.getItem('language');
+        const browser = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+        return saved || browser || i18nConfig.defaultLanguage;
+    }
+
+    function applyInlineFallbackTranslations() {
+        const inline = window.__i18n;
+        if (inline && inline.en && inline.es) {
+            translations.en = inline.en;
+            translations.es = inline.es;
+            return true;
         }
+        return false;
+    }
 
-        function applyTranslations(language) {
-            if (Object.keys(translations[language]).length === 0) return;
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                const text = getNestedValue(translations[language], key);
-                if (text) element.innerHTML = text;
+    async function loadTranslations() {
+        const initialLanguage = resolveInitialLanguage();
+        try {
+            const cb = new Date().getTime();
+            const [enRes, esRes] = await Promise.all([
+                fetch(`./i18n/en.json?v=${cb}`),
+                fetch(`./i18n/es.json?v=${cb}`)
+            ]);
+            if (!enRes.ok || !esRes.ok) throw new Error('HTTP error');
+            translations.en = await enRes.json();
+            translations.es = await esRes.json();
+            setLanguage(initialLanguage);
+        } catch (error) {
+            if (applyInlineFallbackTranslations()) { setLanguage(initialLanguage); return; }
+            console.error('Error cargando traducciones:', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTranslations().then(() => {
+            const siteHeader = document.querySelector('.site-header');
+
+            document.querySelector('.nav-overlay')?.addEventListener('click', () => {
+                siteHeader.classList.remove('nav-open');
             });
-        }
 
-        function setLanguage(language) {
-            if (!i18nConfig.supportedLanguages.includes(language)) language = i18nConfig.defaultLanguage;
-            localStorage.setItem('language', language);
-            document.documentElement.lang = language;
-            applyTranslations(language);
-            const langToggle = document.getElementById('langToggle');
-            if (langToggle instanceof HTMLInputElement) langToggle.checked = language === 'es';
-        }
-
-        function resolveInitialLanguage() {
-            const saved = localStorage.getItem('language');
-            const browser = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
-            return saved || browser || i18nConfig.defaultLanguage;
-        }
-
-        function applyInlineFallbackTranslations() {
-            const inline = window.__i18n;
-            if (inline && inline.en && inline.es) {
-                translations.en = inline.en;
-                translations.es = inline.es;
-                return true;
-            }
-            return false;
-        }
-
-        async function loadTranslations() {
-            const initialLanguage = resolveInitialLanguage();
-            try {
-                const cb = new Date().getTime();
-                const [enRes, esRes] = await Promise.all([
-                    fetch(`./i18n/en.json?v=${cb}`),
-                    fetch(`./i18n/es.json?v=${cb}`)
-                ]);
-                if (!enRes.ok || !esRes.ok) throw new Error('HTTP error');
-                translations.en = await enRes.json();
-                translations.es = await esRes.json();
-                setLanguage(initialLanguage);
-            } catch (error) {
-                if (applyInlineFallbackTranslations()) { setLanguage(initialLanguage); return; }
-                console.error('Error cargando traducciones:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadTranslations().then(() => {
-                const siteHeader = document.querySelector('.site-header');
-
-                document.querySelector('.nav-overlay')?.addEventListener('click', () => {
-                    siteHeader.classList.remove('nav-open');
+            const menuToggle = document.getElementById('menuToggle');
+            if (siteHeader && menuToggle instanceof HTMLButtonElement) {
+                const setMenuOpen = (open) => {
+                    siteHeader.classList.toggle('nav-open', open);
+                    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                };
+                menuToggle.addEventListener('click', () => setMenuOpen(!siteHeader.classList.contains('nav-open')));
+                document.querySelectorAll('#primaryNav a[href^="#"]').forEach(link => {
+                    link.addEventListener('click', () => setMenuOpen(false));
                 });
+                window.addEventListener('resize', () => { if (window.innerWidth > 720) setMenuOpen(false); });
+            }
 
-                const menuToggle = document.getElementById('menuToggle');
-                if (siteHeader && menuToggle instanceof HTMLButtonElement) {
-                    const setMenuOpen = (open) => {
-                        siteHeader.classList.toggle('nav-open', open);
-                        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-                    };
-                    menuToggle.addEventListener('click', () => setMenuOpen(!siteHeader.classList.contains('nav-open')));
-                    document.querySelectorAll('#primaryNav a[href^="#"]').forEach(link => {
-                        link.addEventListener('click', () => setMenuOpen(false));
-                    });
-                    window.addEventListener('resize', () => { if (window.innerWidth > 720) setMenuOpen(false); });
-                }
+            const langToggle = document.getElementById('langToggle');
+            if (langToggle instanceof HTMLInputElement) {
+                langToggle.addEventListener('change', () => setLanguage(langToggle.checked ? 'es' : 'en'));
+            }
 
-                const langToggle = document.getElementById('langToggle');
-                if (langToggle instanceof HTMLInputElement) {
-                    langToggle.addEventListener('change', () => setLanguage(langToggle.checked ? 'es' : 'en'));
-                }
-
-                document.querySelectorAll('details.faq-item').forEach(item => {
-                    item.addEventListener('toggle', () => {
-                        if (!item.open) return;
-                        document.querySelectorAll('details.faq-item').forEach(other => {
-                            if (other !== item) other.open = false;
-                        });
+            document.querySelectorAll('details.faq-item').forEach(item => {
+                item.addEventListener('toggle', () => {
+                    if (!item.open) return;
+                    document.querySelectorAll('details.faq-item').forEach(other => {
+                        if (other !== item) other.open = false;
                     });
                 });
             });
         });
-    </script>
+    });
+
+    /* =============================================
+       MODAL — Login
+       ============================================= */
+    (function () {
+        const APP_URL = 'https://upc-pre-202610-1asi0729-11896-guardiant.github.io/guardiants-webapp/';
+
+        // Referencias al DOM
+        const modal       = document.getElementById('loginModal');
+        const loginBtn    = document.getElementById('loginBtn');
+        const closeBtn    = document.getElementById('modalClose');
+        const submitBtn   = document.getElementById('loginSubmit');
+        const emailInput  = document.getElementById('loginEmail');
+        const passInput   = document.getElementById('loginPassword');
+        const errorBox    = document.getElementById('loginError');
+        const tabs        = document.querySelectorAll('.modal-tab');
+
+        let activeProfile = 'natural'; // 'natural' | 'company'
+
+        // Abrir / cerrar modal
+        function openModal() {
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';
+            emailInput.focus();
+        }
+
+        function closeModal() {
+            modal.hidden = true;
+            document.body.style.overflow = '';
+            clearErrors();
+            emailInput.value = '';
+            passInput.value  = '';
+        }
+
+        // Mostrar error
+        function showError(msg) {
+            errorBox.textContent = msg;
+            errorBox.hidden = false;
+        }
+
+        function clearErrors() {
+            errorBox.hidden = true;
+            emailInput.classList.remove('input-error');
+            passInput.classList.remove('input-error');
+        }
+
+        // Validación básica
+        function validate() {
+            clearErrors();
+            const email = emailInput.value.trim();
+            const pass  = passInput.value;
+            const lang  = document.documentElement.lang || 'en';
+
+            const msgs = {
+                en: { email: 'Please enter a valid email.', pass: 'Password must be at least 6 characters.' },
+                es: { email: 'Por favor ingresa un email válido.', pass: 'La contraseña debe tener al menos 6 caracteres.' }
+            };
+            const m = msgs[lang] || msgs.en;
+
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            if (!emailOk) {
+                emailInput.classList.add('input-error');
+                showError(m.email);
+                return false;
+            }
+            if (pass.length < 6) {
+                passInput.classList.add('input-error');
+                showError(m.pass);
+                return false;
+            }
+            return true;
+        }
+
+        // Simulación de login + redirección
+        function handleLogin() {
+            if (!validate()) return;
+
+            submitBtn.disabled   = true;
+            submitBtn.textContent = '...';
+
+            // Simula latencia de red (800 ms) y redirige
+            setTimeout(() => {
+                window.location.href = APP_URL;
+            }, 800);
+        }
+
+        // Tabs de perfil
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('modal-tab--active'));
+                tab.classList.add('modal-tab--active');
+                activeProfile = tab.dataset.tab;
+            });
+        });
+
+        // Eventos
+        loginBtn?.addEventListener('click',  openModal);
+        closeBtn?.addEventListener('click',  closeModal);
+        submitBtn?.addEventListener('click', handleLogin);
+
+        // Cerrar con Escape o clic en overlay
+        modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+        // Botones de pricing → abren el modal
+        document.querySelectorAll('.btn-pricing').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        });
+    })();
+</script>
 </body>
 </html>

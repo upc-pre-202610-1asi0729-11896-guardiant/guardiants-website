@@ -9,7 +9,7 @@
         "contact": "Contact",
         "menu": "Menu"
     },
-    "cta":{
+    "cta": {
         "login": "Login",
         "signup": "Sign Up"
     },
@@ -70,14 +70,14 @@
             }
         ]
     },
-    "telemetrySection":{
+    "telemetrySection": {
         "title": "Where telemetry and security meets",
         "content": "We transform raw vehicle data into actionable intelligence. Our platform doesn't just track location: it monitors engine health, driving patterns, and operational efficiency, ensuring that you remain in total control of your assets, 24/7.",
         "bullet1": "Predictive Maintenance Monitoring",
         "bullet2": "Driving Behavior Analytics",
         "bullet3": "Instant Security Alerts"
     },
-    "howdoesitworkSection":{
+    "howdoesitworkSection": {
         "title": "How does it work?",
         "segment1": {
             "title": "Natural Person",
@@ -91,6 +91,39 @@
             "title": "Government agencies",
             "description": "State agencies such as the police and other stakeholders within the Ministry of the Interior are responsible for protecting assets and personnel securely and reliably. The placement of servers for this segment in their designated locations is considered."
         }
+    },
+    "pricing": {
+        "title": "Plans",
+        "cta": "Get Started",
+        "basic": {
+            "badge": "Basic",
+            "price": "9",
+            "period": "/mo",
+            "desc": "Ideal for individual vehicle owners who want real-time protection.",
+            "f1": "Real-time GPS tracking",
+            "f2": "Instant security alerts",
+            "f3": "1 vehicle",
+            "f4": "Mobile app access"
+        },
+        "pro": {
+            "badge": "Pro",
+            "price": "29",
+            "period": "/mo",
+            "desc": "For companies and fleets that demand advanced telemetry and reporting.",
+            "f1": "Everything in Basic",
+            "f2": "Fleet management (up to 20)",
+            "f3": "Driver behavior analytics",
+            "f4": "Predictive maintenance alerts",
+            "f5": "Priority support"
+        }
+    },
+    "login": {
+        "title": "Sign In",
+        "tabNatural": "Natural Person",
+        "tabCompany": "Company",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "submit": "Sign In"
     },
     "faq": {
         "title": "Frequently asked questions",
@@ -135,7 +168,7 @@
         "location1": "Santiago de Surco",
         "location2": "Lima - Perú"
     },
-    "rights":{
+    "rights": {
         "content": "God's Tracker © 2025"
     }
 }

@@ -92,6 +92,39 @@
             "description": "Entidades del Estado como la policía y otros actores responsables de proteger activos y personal de forma segura y confiable. Se considera la instalación de servidores para este segmento en ubicaciones designadas."
         }
     },
+    "pricing": {
+        "title": "Planes",
+        "cta": "Comenzar",
+        "basic": {
+            "badge": "Básico",
+            "price": "9",
+            "period": "/mes",
+            "desc": "Ideal para propietarios individuales que quieren protección en tiempo real.",
+            "f1": "Rastreo GPS en tiempo real",
+            "f2": "Alertas de seguridad instantáneas",
+            "f3": "1 vehículo",
+            "f4": "Acceso desde la app móvil"
+        },
+        "pro": {
+            "badge": "Pro",
+            "price": "29",
+            "period": "/mes",
+            "desc": "Para empresas y flotas que exigen telemetría avanzada e informes detallados.",
+            "f1": "Todo lo del plan Básico",
+            "f2": "Gestión de flota (hasta 20)",
+            "f3": "Analítica de comportamiento del conductor",
+            "f4": "Alertas de mantenimiento predictivo",
+            "f5": "Soporte prioritario"
+        }
+    },
+    "login": {
+        "title": "Iniciar sesión",
+        "tabNatural": "Persona natural",
+        "tabCompany": "Empresa",
+        "emailLabel": "Correo",
+        "passwordLabel": "Contraseña",
+        "submit": "Iniciar sesión"
+    },
     "faq": {
         "title": "Preguntas frecuentes",
         "items": [
