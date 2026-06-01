@@ -77,7 +77,7 @@
         .brand-mark {
             width: 44px;
             height: 44px;
-            background: #bdbdbd;
+            background: hsla(0, 0%, 100%, 0.925);
             border-radius: 8px;
             display: flex;
             align-items: center;
