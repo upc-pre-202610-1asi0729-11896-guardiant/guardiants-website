@@ -1,7 +1,7 @@
 # Landing Page
 
 ## Overview
-This project is a landing page for GuardiAnts Startup.
+This project is a landing page for GuardiAnts Startup. It is deployed in [https://upc-pre-202610-1asi0729-11896-guardiant.github.io/guardiants-website/](https://upc-pre-202610-1asi0729-11896-guardiant.github.io/guardiants-website/)
 
 ## Features
 - Shows vision and mission.
@@ -22,8 +22,6 @@ This project is a landing page for GuardiAnts Startup.
 ## User Stories
 The user stories can be found in the [docs/user-stories.md](docs/user-stories.md) file.
 
-## Class Diagram
-The class diagram can be found in the [docs/class-diagram.puml](docs/class-diagram.puml) file.
 # Environment Variables
 To run this project, you need to set up the following environment variables:
 - `newsProviderApiKey`: Your API key for the NewsAPI.org service. You can obtain an API key by signing up at [NewsAPI.org](https://newsapi.org/).
